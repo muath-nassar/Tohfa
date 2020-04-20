@@ -1,4 +1,4 @@
-package com.iuglab.tohfa.UIElements
+package com.iuglab.tohfa.ui_elements
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
