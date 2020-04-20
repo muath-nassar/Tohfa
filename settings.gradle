@@ -1,0 +1,2 @@
+rootProject.name='Tohfa'
+include ':app'
