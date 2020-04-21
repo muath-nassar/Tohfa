@@ -5,7 +5,7 @@ import com.iuglab.tohfa.appLogic.models.User
 
 class ApplicationHelper: Application() {
     companion object{
-        var user: User? = null
+        var currentUser: User? = null
         val notificationChannel = "com.iuglab.tohfa"
     }
 }
