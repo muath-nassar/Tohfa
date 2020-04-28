@@ -10,6 +10,7 @@ class Cart {
 
 
     companion object {
+        val g : HashMap<String,String>? = null
 
         private val products = mutableMapOf<Product, Int>()
         private var instance: Cart? = null
