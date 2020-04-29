@@ -3,7 +3,8 @@
     package="com.iuglab.tohfa">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-feature android:name="android.hardware.screen.portrait"/>
+
+    <uses-feature android:name="android.hardware.screen.portrait" />
 
     <application
         android:name=".appLogic.extra_helpers.ApplicationHelper"
@@ -14,21 +15,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui_elements.ProductPosition"/>
+        <activity android:name=".ui_elements.admin.activities.ActivityShowProductForAdmin"></activity>
+        <activity android:name=".ui_elements.admin.activities.ActivityShowCategoriesForAdmin" />
+        <activity android:name=".ui_elements.admin.activities.ActivityUpdateProduct" />
+        <activity android:name=".ui_elements.admin.activities.ActivityAddProduct" />
+        <activity android:name=".ui_elements.admin.activities.ActivityUpdateCategory" />
+        <activity android:name=".ui_elements.admin.activities.ActivityAddCategory" />
+        <activity android:name=".ui_elements.admin.activities.AdminHome" />
+        <activity android:name=".ui_elements.ProductPosition" />
         <activity android:name=".ui_elements.Welcome" />
         <activity android:name=".ui_elements.ForgetPassword" />
         <activity android:name=".ui_elements.Settings" />
         <activity android:name=".ui_elements.SignUp" />
-        <activity android:name=".ui_elements.LoginActivity" android:configChanges="keyboardHidden|uiMode|orientation" android:screenOrientation="portrait">
+        <activity
+            android:name=".ui_elements.LoginActivity"
+            android:configChanges="keyboardHidden|uiMode|orientation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui_elements.SplashScreen">
-
-        </activity>
+        <activity android:name=".ui_elements.SplashScreen" />
     </application>
 
 </manifest>
