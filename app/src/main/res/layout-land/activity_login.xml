@@ -8,30 +8,18 @@
     android:background="#fff"
     tools:context=".ui_elements.LoginActivity">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:src="@drawable/ic_applogo"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/titlesfont"
         android:text="@string/app_name"
         android:textColor="@color/primary"
         android:textSize="36sp"
-        android:shadowRadius="2"
-        android:shadowDx="5"
-        android:shadowDy="5"
-        android:shadowColor="#9A817D7B"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayout1"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout1"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -40,20 +28,20 @@
         android:text="Market"
         android:textColor="@color/primary"
         android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintStart_toEndOf="@+id/textView4" />
+        app:layout_constraintBottom_toBottomOf="@+id/textView4"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintTop_toTopOf="@+id/textView4"
+        app:layout_constraintVertical_bias="1.0" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout1"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="25dp"
+        android:layout_width="550dp"
+        android:layout_height="70dp"
         android:hint="@string/email"
         android:outlineAmbientShadowColor="@color/secondary_text"
         android:pointerIcon="wait"
+        android:autofillHints="abc@Gmail.com"
         app:boxBackgroundMode="outline"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
@@ -65,10 +53,9 @@
         app:endIconTint="@color/primary"
         app:hintAnimationEnabled="true"
         app:hintEnabled="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintEnd_toStartOf="@+id/textView5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2">
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
 
 
         <com.google.android.material.textfield.TextInputEditText
@@ -83,9 +70,9 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout2"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_width="550dp"
+        android:layout_height="70dp"
+        android:layout_margin="20dp"
         android:outlineAmbientShadowColor="@color/secondary_text"
         android:pointerIcon="wait"
         app:boxBackgroundMode="outline"
@@ -100,8 +87,8 @@
         app:endIconTint="@color/primary"
         app:hintAnimationEnabled="true"
         app:hintEnabled="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayout1"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout1"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout1">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -118,9 +105,9 @@
         android:id="@+id/tvForgetPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/titlesfont"
         android:padding="5dp"
         android:text="Forget Password ?"
-        android:fontFamily="@font/titlesfont"
         android:textColor="@color/primary"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
@@ -128,28 +115,29 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnlogin"
-        android:layout_width="match_parent"
+        android:layout_width="550dp"
         android:layout_height="70dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="10dp"
         android:fontFamily="@font/titlesfont"
         android:gravity="center"
         android:text="@string/login"
         android:textColor="#fff"
-        app:elevation="20dp"
         android:textSize="25sp"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
-        tools:layout_editor_absoluteX="8dp" />
+        app:cornerRadius="@dimen/autoDimens"
+        app:layout_constraintBottom_toTopOf="@+id/tvSignUp"
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/tvForgetPassword" />
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_width="182dp"
+        android:layout_height="0dp"
+        android:rotation="90"
         android:src="@drawable/ic_group_585"
-        app:layout_constraintTop_toBottomOf="@+id/btnlogin"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView5"
@@ -167,27 +155,23 @@
         android:id="@+id/loginByFacebook"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:background="#fff"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_facebook"
-        app:layout_constraintEnd_toStartOf="@+id/textView5"
-        app:layout_constraintHorizontal_bias="0.784"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <ImageButton
         android:id="@+id/loginByGoogle"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="16dp"
         android:background="#fff"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_google"
-        app:layout_constraintEnd_toEndOf="@+id/imageView3"
-        app:layout_constraintHorizontal_bias="0.21"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintStart_toEndOf="@+id/textView5" />
 
     <LinearLayout
         android:id="@+id/tvSignUp"
@@ -214,6 +198,5 @@
             android:textSize="16sp" />
 
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
