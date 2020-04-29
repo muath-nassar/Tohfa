@@ -3,6 +3,7 @@
     package="com.iuglab.tohfa">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-feature android:name="android.hardware.screen.portrait"/>
 
     <application
         android:name=".appLogic.extra_helpers.ApplicationHelper"
@@ -18,7 +19,7 @@
         <activity android:name=".ui_elements.ForgetPassword" />
         <activity android:name=".ui_elements.Settings" />
         <activity android:name=".ui_elements.SignUp" />
-        <activity android:name=".ui_elements.LoginActivity" android:configChanges="keyboardHidden|uiMode|orientation" android:screenOrientation="sensorPortrait">
+        <activity android:name=".ui_elements.LoginActivity" android:configChanges="keyboardHidden|uiMode|orientation" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
