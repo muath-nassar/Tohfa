@@ -18,7 +18,7 @@
         <activity android:name=".ui_elements.ForgetPassword" />
         <activity android:name=".ui_elements.Settings" />
         <activity android:name=".ui_elements.SignUp" />
-        <activity android:name=".ui_elements.LoginActivity">
+        <activity android:name=".ui_elements.LoginActivity" android:configChanges="keyboardHidden|uiMode|orientation" android:screenOrientation="sensorPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

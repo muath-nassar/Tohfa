@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Window
+import com.bumptech.glide.Glide
 import com.iuglab.tohfa.R
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -22,7 +23,6 @@ class LoginActivity : AppCompatActivity() {
         tvSignUp.setOnClickListener {
             startActivity(Intent(this,SignUp::class.java))
         }
-
 
 
 
