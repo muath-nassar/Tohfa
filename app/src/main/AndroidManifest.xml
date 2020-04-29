@@ -13,18 +13,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui_elements.ProductPosition"></activity>
+        <activity android:name=".ui_elements.ProductPosition"/>
         <activity android:name=".ui_elements.Welcome" />
         <activity android:name=".ui_elements.ForgetPassword" />
         <activity android:name=".ui_elements.Settings" />
         <activity android:name=".ui_elements.SignUp" />
-        <activity android:name=".ui_elements.LoginActivity" />
-        <activity android:name=".ui_elements.SplashScreen">
+        <activity android:name=".ui_elements.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".ui_elements.SplashScreen">
+
         </activity>
     </application>
 
