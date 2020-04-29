@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "300920142259",
+    "firebase_url": "https://tohfa-online-shop.firebaseio.com",
+    "project_id": "tohfa-online-shop",
+    "storage_bucket": "tohfa-online-shop.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:300920142259:android:bd8a29b652b6c28e4973c6",
+        "android_client_info": {
+          "package_name": "com.iuglab.tohfa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "300920142259-ahad1ekch2hkd3p5afl27crh5oqf3rch.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoHvk7DZzqmNLWhuHfnPXvOTp-c88WGWU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "300920142259-ahad1ekch2hkd3p5afl27crh5oqf3rch.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
