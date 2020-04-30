@@ -15,9 +15,6 @@ class LoginActivity : AppCompatActivity() {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE)
         supportActionBar!!.hide()
         setContentView(R.layout.activity_login)
-        //xxxxxx
-        //zzzzz
-
 
         tvForgetPassword.setOnClickListener {
             startActivity(Intent(this,ForgetPassword::class.java))
