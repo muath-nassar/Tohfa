@@ -26,9 +26,7 @@
         <activity android:name=".ui_elements.Welcome" />
         <activity android:name=".ui_elements.ForgetPassword" />
         <activity android:name=".ui_elements.Settings" />
-        <activity android:name=".ui_elements.SignUp" />
-        <activity
-            android:name=".ui_elements.LoginActivity"
+        <activity android:name=".ui_elements.SignUp"
             android:configChanges="keyboardHidden|uiMode|orientation"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -37,6 +35,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui_elements.LoginActivity"
+            android:configChanges="keyboardHidden|uiMode|orientation"
+            android:screenOrientation="portrait"/>
         <activity android:name=".ui_elements.SplashScreen" />
     </application>
 

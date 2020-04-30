@@ -10,4 +10,6 @@
     <color name="divider">#BDBDBD</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
+    <color name="shadow">#DA4E4A4E</color>
+    <color name="defultbckground">#fff</color>
 </resources>

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
+    android:background="@color/defultbckground"
     tools:context=".ui_elements.LoginActivity">
 
     <ImageView
@@ -20,18 +20,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/titlesfont"
+        android:shadowColor="#9A817D7B"
+        android:shadowDx="5"
+        android:shadowDy="5"
+        android:shadowRadius="2"
         android:text="@string/app_name"
         android:textColor="@color/primary"
         android:textSize="36sp"
-        android:shadowRadius="2"
-        android:shadowDx="5"
-        android:shadowDy="5"
-        android:shadowColor="#9A817D7B"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -72,7 +70,7 @@
 
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/loginEmail"
+            android:id="@+id/signupUsername"
             android:layout_width="match_parent"
             android:layout_height="65dp"
             android:fontFamily="@font/titlesfont"
@@ -105,7 +103,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout1">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/loginPassword"
+            android:id="@+id/SignupRePassword"
             android:layout_width="match_parent"
             android:layout_height="65dp"
             android:fontFamily="@font/titlesfont"
@@ -127,7 +125,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnlogin"
+        android:id="@+id/btnSendPassword"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_marginStart="10dp"
@@ -148,7 +146,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:src="@drawable/ic_group_585"
-        app:layout_constraintTop_toBottomOf="@+id/btnlogin"
+        app:layout_constraintTop_toBottomOf="@+id/btnSendPassword"
         tools:layout_editor_absoluteX="0dp" />
 
     <TextView
@@ -164,35 +162,37 @@
         app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
     <ImageButton
-        android:id="@+id/loginByFacebook"
+        android:id="@+id/signupByFacebook"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
         android:background="#fff"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_facebook"
-        app:layout_constraintBottom_toTopOf="@+id/tvSignUp"
+        app:layout_constraintBottom_toTopOf="@+id/tvSignup"
         app:layout_constraintEnd_toStartOf="@+id/textView5"
         app:layout_constraintHorizontal_bias="0.784"
         app:layout_constraintStart_toStartOf="@+id/imageView3"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.178" />
 
     <ImageButton
-        android:id="@+id/loginByGoogle"
+        android:id="@+id/signupByGoogle"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
         android:background="#fff"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_google"
-        app:layout_constraintBottom_toTopOf="@+id/tvSignUp"
+        app:layout_constraintBottom_toTopOf="@+id/tvSignup"
         app:layout_constraintEnd_toEndOf="@+id/imageView3"
         app:layout_constraintHorizontal_bias="0.21"
         app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.178" />
 
     <LinearLayout
-        android:id="@+id/tvSignUp"
+        android:id="@+id/tvSignup"
         android:padding="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
