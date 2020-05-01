@@ -10,12 +10,11 @@
         android:name=".appLogic.extra_helpers.ApplicationHelper"
         android:allowBackup="true"
         android:fullBackupContent="@xml/backup_descriptor"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_applogo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui_elements.admin.activities.ActivityShowProductForAdmin"></activity>
+        <activity android:name=".ui_elements.admin.activities.ActivityShowProductForAdmin" />
         <activity android:name=".ui_elements.admin.activities.ActivityShowCategoriesForAdmin" />
         <activity android:name=".ui_elements.admin.activities.ActivityUpdateProduct" />
         <activity android:name=".ui_elements.admin.activities.ActivityAddProduct" />
@@ -23,23 +22,35 @@
         <activity android:name=".ui_elements.admin.activities.ActivityAddCategory" />
         <activity android:name=".ui_elements.admin.activities.AdminHome" />
         <activity android:name=".ui_elements.ProductPosition" />
-        <activity android:name=".ui_elements.Welcome" />
+        <activity android:name=".ui_elements.Welcome"
+            android:configChanges="keyboardHidden|uiMode|orientation"
+            android:screenOrientation="portrait" >
+
+        </activity>
         <activity android:name=".ui_elements.ForgetPassword" />
         <activity android:name=".ui_elements.Settings" />
-        <activity android:name=".ui_elements.SignUp"
+        <activity
+            android:name=".ui_elements.SignUp"
             android:configChanges="keyboardHidden|uiMode|orientation"
             android:screenOrientation="portrait">
+
+        </activity>
+        <activity
+            android:name=".ui_elements.LoginActivity"
+            android:configChanges="keyboardHidden|uiMode|orientation"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity
+            android:name=".ui_elements.SplashScreen"
+            android:configChanges="keyboardHidden|uiMode|orientation"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui_elements.LoginActivity"
-            android:configChanges="keyboardHidden|uiMode|orientation"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ui_elements.SplashScreen" />
     </application>
 
 </manifest>

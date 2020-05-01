@@ -6,15 +6,96 @@
     android:layout_height="match_parent"
     tools:context=".ui_elements.Welcome">
 
-    <LinearLayout
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:background="#191818"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="5dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="30dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="10dp">
+
+        <ImageView
+            android:layout_width="68dp"
+            android:layout_height="71dp"
+            android:src="@drawable/ic_applogo2"
+            tools:layout_editor_absoluteX="72dp" />
+
+        <ViewFlipper
+            android:id="@+id/imgFlipper"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:padding="20dp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_security" />
+
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_flixable" />
+
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_fast_delivery" />
+
+        </ViewFlipper>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <TextSwitcher
+        android:id="@+id/switcher1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/titlesfont"
+        android:padding="30dp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="35sp"
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        tools:layout_editor_absoluteX="20dp" />
+
+    <TextSwitcher
+        android:id="@+id/switcher2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        app:layout_constraintTop_toTopOf="parent">
+        android:fontFamily="@font/titlesfont"
+        android:padding="30dp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnNext"
+        app:layout_constraintTop_toBottomOf="@+id/switcher1"
+        tools:layout_editor_absoluteX="-9dp" />
 
-
-
-    </LinearLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnNext"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_margin="10dp"
+        android:fontFamily="@font/titlesfont"
+        android:gravity="center"
+        android:text="Next"
+        android:textColor="#fff"
+        android:textSize="25sp"
+        app:elevation="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:translationY="100dp"
+        android:alpha="0"
+        tools:layout_editor_absoluteX="8dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
