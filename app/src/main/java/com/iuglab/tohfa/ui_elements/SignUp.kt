@@ -11,8 +11,6 @@ class SignUp : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        supportActionBar!!.hide()
         setContentView(R.layout.activity_sign_up)
 
         tvSignup.setOnClickListener {
