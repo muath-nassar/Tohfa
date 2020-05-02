@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.iuglab.tohfa">
 
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-feature android:name="android.hardware.screen.portrait" />
@@ -14,43 +20,45 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".ui_elements.user.userMapsActivity"
+            android:label="@string/title_activity_user_maps"></activity>
+        <activity
+            android:name=".ui_elements.admin.activities.adminMapsActivity"
+            android:label="@string/title_activity_admin_maps" />
         <activity android:name=".ui_elements.admin.activities.ActivityShowProductForAdmin" />
         <activity android:name=".ui_elements.admin.activities.ActivityShowCategoriesForAdmin" />
         <activity android:name=".ui_elements.admin.activities.ActivityUpdateProduct" />
         <activity android:name=".ui_elements.admin.activities.ActivityAddProduct" />
         <activity android:name=".ui_elements.admin.activities.ActivityUpdateCategory" />
         <activity android:name=".ui_elements.admin.activities.ActivityAddCategory" />
-        <activity android:name=".ui_elements.admin.activities.AdminHome" />
-        <activity android:name=".ui_elements.ProductPosition" />
-        <activity android:name=".ui_elements.Welcome"
-            android:configChanges="keyboardHidden|uiMode|orientation"
-            android:screenOrientation="portrait" >
-
-        </activity>
-        <activity android:name=".ui_elements.ForgetPassword" />
-        <activity android:name=".ui_elements.Settings" />
-        <activity
-            android:name=".ui_elements.SignUp"
-            android:configChanges="keyboardHidden|uiMode|orientation"
-            android:screenOrientation="portrait">
-
-        </activity>
-        <activity
-            android:name=".ui_elements.LoginActivity"
-            android:configChanges="keyboardHidden|uiMode|orientation"
-            android:screenOrientation="portrait">
-
-        </activity>
-        <activity
-            android:name=".ui_elements.SplashScreen"
-            android:configChanges="keyboardHidden|uiMode|orientation"
-            android:screenOrientation="portrait" >
+        <activity android:name=".ui_elements.admin.activities.AdminHome">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui_elements.ProductPosition" />
+        <activity android:name=".ui_elements.Welcome" />
+        <activity android:name=".ui_elements.ForgetPassword" />
+        <activity android:name=".ui_elements.Settings" />
+        <activity android:name=".ui_elements.SignUp" />
+        <activity android:name=".ui_elements.LoginActivity" />
+        <activity android:name=".ui_elements.SplashScreen" />
     </application>
 
 </manifest>
