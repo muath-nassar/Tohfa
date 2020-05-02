@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+ <item
+     android:id="@+id/categories_menu_product"
+     android:icon="@drawable/a_category"
+     android:title="@string/product"
+     />
+  <item
+        android:id="@+id/categories_menu_categories"
+        android:icon="@drawable/ic_categoeries"
+        android:title="@string/categories"
+        />
+
+</menu>

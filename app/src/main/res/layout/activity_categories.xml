@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui_elements.user.activity.CategoriesActivity"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/categories_toolbar"
+        android:background="@color/primary"
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"/>
+
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/categories_tab"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:fillViewport="true"
+        app:tabBackground="@color/white"
+        app:tabGravity="fill"
+        app:tabIndicator="@color/white"
+        app:tabMode="scrollable"
+        app:tabSelectedTextColor="@color/white"
+        app:tabTextColor="@color/primary"
+        android:layout_below="@+id/categories_toolbar"
+        />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/categories_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/categories_tab"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/categories_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/primary"
+        android:src="@drawable/ic_shopping"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        />
+
+</RelativeLayout>

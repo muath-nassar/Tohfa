@@ -6,4 +6,20 @@
     <string name="title_activity_admin_maps">Map</string>
     <string name="title_activity_user_maps">Map</string>
 
+
+    //user
+    <string name="style">Style</string>
+    <string name="categories">categories</string>
+    <string name="product">product</string>
+    <string name="add_to_favorite">Add to favorite</string>
+    <string name="report">Report</string>
+    <string name="detailes">Detailes :</string>
+    <string name="test">test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test
+    test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test
+    </string>
+    <string name="see_more">See more ..</string>
+    <string name="location">Location :</string>
+    <string name="contity">Contity</string>
+    <string name="buy_now">BUY NOW</string>
+
 </resources>
