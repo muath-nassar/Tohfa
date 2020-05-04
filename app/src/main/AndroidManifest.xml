@@ -35,7 +35,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".ui_elements.user.userMapsActivity"
+            android:name=".ui_elements.user.activity.userMapsActivity"
             android:label="@string/title_activity_user_maps" />
         <activity
             android:name=".ui_elements.admin.activities.adminMapsActivity"
@@ -47,11 +47,7 @@
         <activity android:name=".ui_elements.admin.activities.ActivityUpdateCategory" />
         <activity android:name=".ui_elements.admin.activities.ActivityAddCategory" />
         <activity android:name=".ui_elements.admin.activities.AdminHome">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".ui_elements.ProductPosition" />
         <activity android:name=".ui_elements.Welcome" />
@@ -59,7 +55,13 @@
         <activity android:name=".ui_elements.Settings" />
         <activity android:name=".ui_elements.SignUp" />
         <activity android:name=".ui_elements.LoginActivity" />
-        <activity android:name=".ui_elements.SplashScreen" />
+        <activity android:name=".ui_elements.SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
