@@ -19,7 +19,6 @@ class SignUp : AppCompatActivity() {
 
         tvSignup.setOnClickListener { startActivity(Intent(this,LoginActivity::class.java)) }
 
-
         auth = FirebaseAuth.getInstance()
     }
 
@@ -33,7 +32,7 @@ class SignUp : AppCompatActivity() {
             setCancelable(false)
         }
 
-        btnLogin.setOnClickListener {
+        btnSignup.setOnClickListener {
             if (signupUsername.text!!.isNotEmpty()) {
                 if (signupEmail.text!!.isNotEmpty()) {
                     if (signupPassword.text!!.isNotEmpty() && signupPassword.text.toString().length >= 8) {

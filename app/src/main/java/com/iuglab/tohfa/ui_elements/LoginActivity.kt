@@ -3,14 +3,10 @@ package com.iuglab.tohfa.ui_elements
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.ImageView
 import android.widget.Toast
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -30,11 +26,7 @@ import kotlinx.android.synthetic.main.activity_login.signInButton
 import kotlinx.android.synthetic.main.activity_login.signinPassword
 import kotlinx.android.synthetic.main.activity_login.signupUsername
 import kotlinx.android.synthetic.main.activity_login.tvSignup
-import kotlinx.android.synthetic.main.activity_sign_in_with_g_o_o_g_l_e.*
-import kotlinx.android.synthetic.main.activity_sign_up.*
-import java.io.ByteArrayOutputStream
-import java.io.InputStream
-import java.net.URL
+
 
 class LoginActivity : AppCompatActivity() , View.OnClickListener{
 
@@ -65,9 +57,7 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener{
             startActivity(Intent(this, SignUp::class.java))
         }
 
-        signInButton.setOnClickListener {
-            GoogleSignInActivity().onClick(signInButton)
-        }
+        signInButton.setOnClickListener(this)
 
         val pd = ProgressDialog(this).apply {
             setIcon(R.drawable.b_applogo)
@@ -75,7 +65,6 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener{
             setMessage("Data validation in progress ...")
             setCancelable(false)
         }
-
 
         btnLogin.setOnClickListener { it ->
             if (signupUsername.text!!.isNotEmpty()) {
@@ -108,7 +97,7 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener{
                                 i.putExtra("id", uid)
                                 startActivity(i)
                             }
-                            finish()
+                            updateUI(result)
                         } else {
                             Snackbar.make(logincontiner, "Login Failure ,  Please Try Again", Snackbar.LENGTH_LONG).show()
                         }
@@ -175,14 +164,10 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener{
                 val account = task.getResult(ApiException::class.java) // get Account Informations
                 firebaseAuthWithGoogle(account!!)
 
-
-
             } catch (e: ApiException) {
                 // Google Sign In failed, update UI appropriately
                 Log.w(TAG, "Google sign in failed", e)
-                // [START_EXCLUDE]
                 updateUI(null)
-                // [END_EXCLUDE]
             }
         }
     }
@@ -192,7 +177,7 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener{
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.id!!)
         // [START_EXCLUDE silent]
         if (!googleProgressBar.isShown){
-            progressBar.visibility = View.VISIBLE
+            googleProgressBar.visibility = View.VISIBLE
         }
 
         val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
@@ -201,18 +186,19 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener{
                 // Sign in success, update UI with the signed-in user's information
                 Log.d(TAG, "signInWithCredential:success")
                 val user = auth.currentUser
+                createSharedPrefs("MyPref2","isLogin")
                 updateUI(user)
             } else {
                 // If sign in fails, display a message to the user.
                 Log.w(TAG, "signInWithCredential:failure", task.exception)
-                Snackbar.make(continer, "Authentication Failed. ${task.exception}", Snackbar.LENGTH_LONG).show()
+                Snackbar.make(logincontiner, "Authentication Failed. ${task.exception}", Snackbar.LENGTH_LONG).show()
                 Toast.makeText(applicationContext,"${task.exception}",Toast.LENGTH_LONG).show()
                 updateUI(null)
             }
 
             // [START_EXCLUDE]
             if (googleProgressBar.isShown){
-                progressBar.visibility = View.GONE
+                googleProgressBar.visibility = View.GONE
             }
         }
     }
@@ -222,7 +208,7 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener{
             R.id.signInButton -> {
                 val signInIntent = googleSignInClient.signInIntent
                 startActivityForResult(signInIntent, RC_SIGN_IN)
-                googleProgressBar.visibility = View.VISIBLE
+                if (!googleProgressBar.isShown) googleProgressBar.visibility = View.VISIBLE
             }
 
 //                R.id.signOutButton -> {
@@ -249,36 +235,36 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener{
         }
     }
 
-    private fun updateUI(user: FirebaseUser?) {
-        googleProgressBar.visibility = View.GONE
+    fun updateUI(user: FirebaseUser?) {
+        if (googleProgressBar.isShown) googleProgressBar.visibility = View.GONE
 
-        if (user != null) {
-//            status.text = "SignIn"
+        val sharedPref2 = getSharedPreferences("MyPref2", Context.MODE_PRIVATE)
+        val isLogin = sharedPref2.getBoolean("isLogin",false)
+        if (isLogin){
+            if (user != null) {
+                Toast.makeText(applicationContext,"${user.email}",Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext,"${user.displayName}",Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext,"${user.photoUrl}",Toast.LENGTH_LONG).show()
 
-            // account Info
-//            detail.text = "${user.email} \n ${user.photoUrl} \n ${user.displayName}"
-            Toast.makeText(applicationContext,"${user.displayName}",Toast.LENGTH_LONG).show()
-            Toast.makeText(applicationContext,"${user.photoUrl}",Toast.LENGTH_LONG).show()
-            Toast.makeText(applicationContext,"${user.email}",Toast.LENGTH_SHORT).show()
+                val i = Intent(this, CategoriesActivity::class.java)
+                i.putExtra("Uemail", user.email)
+                i.putExtra("Uname", user.displayName)
+                i.putExtra("Uid", user.uid)
+                i.putExtra("Uphoto", user.phoneNumber)
+                startActivity(i)
 
-            val i = Intent(this, CategoriesActivity::class.java)
-            i.putExtra("Uemail", user.email)
-            i.putExtra("Uname", user.displayName)
-            i.putExtra("Uid", user.uid)
-            i.putExtra("Uphoto", user.phoneNumber)
-            startActivity(i)
+                if (signInButton.isShown){
+                    signInButton.visibility = View.GONE
+                }
 
-            startActivity(Intent(applicationContext,CategoriesActivity::class.java))
-            if (signInButton.isShown){
-                signInButton.visibility = View.GONE
+                finish()
+            } else {
+                if (!signInButton.isShown){
+                    signInButton.visibility = View.VISIBLE
+                }
             }
 
-            finish()
-        } else {
-            if (!signInButton.isShown){
-                signInButton.visibility = View.VISIBLE
             }
-        }
     }
 
     fun createSharedPrefs(filename: String , key: String){
