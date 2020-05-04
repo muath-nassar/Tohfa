@@ -21,7 +21,9 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ui_elements.user.activity.SearchActivity"></activity>
         <activity android:name=".ui_elements.user.activity.DetailesActivity"></activity>
-        <activity android:name=".ui_elements.user.activity.CategoriesActivity" />
+        <activity android:name=".ui_elements.user.activity.CategoriesActivity" >
+
+        </activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
