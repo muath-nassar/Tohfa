@@ -4,31 +4,29 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.contentValuesOf
 import androidx.recyclerview.widget.RecyclerView
 import com.iuglab.tohfa.R
-import com.iuglab.tohfa.ui_elements.user.model.Varieties
-import kotlinx.android.synthetic.main.categories_item_layout.view.*
+import com.iuglab.tohfa.appLogic.models.Product
+import kotlin.coroutines.coroutineContext
 
-class varietiesAdapter(var conetxt:Context , var varieties:ArrayList<Varieties>) : RecyclerView.Adapter<varietiesAdapter.MyViewHolder>(){
+class productAdapter (var context: Context,var products:ArrayList<Product>): RecyclerView.Adapter<productAdapter.MyViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        var root = LayoutInflater.from(conetxt).inflate(R.layout.categories_item_layout,parent,false)
-        return MyViewHolder(root)
+        TODO("Not yet implemented")
     }
 
     override fun getItemCount(): Int {
-       return varieties.size
+        TODO("Not yet implemented")
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-
+        TODO("Not yet implemented")
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        var img = itemView.categories_item_img
-        var name = itemView.categories_item_txt
-
 
     }
+
 
 }
