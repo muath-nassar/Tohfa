@@ -32,7 +32,7 @@ class Cart {
         var total: Double = 0.0
         if (products.size>0){
             for (i in products){
-                total+= i.key.price * i.value
+                //total+= i.key.price * i.value
             }
             return total
         }else return 0.0

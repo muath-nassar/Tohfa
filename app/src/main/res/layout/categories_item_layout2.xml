@@ -15,7 +15,8 @@
             android:id="@+id/categories_item2_img"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/test_img"/>
+            android:src="@drawable/test_img"
+            android:scaleType="centerCrop"/>
 
         <ImageView
             android:id="@+id/categories_item2_btn_favorite"

@@ -2,16 +2,18 @@ package com.iuglab.tohfa.appLogic.models
 
 import java.net.URI
 
-data class Product(
-    var name: String,
-    var category: String,
-    var id: String?,
-    var price: Double,
-    var description: String,
-    var img: URI?,
-    var rate: Int = 0,
-    var location: Location
-) {
+ class Product
+    (
+//    var name: String,
+//    var category: String,
+//    var id: String?,
+//    var price: Double,
+//    var description: String,
+//    var img: URI?,
+//    var rate: Int = 0,
+//    var location: Location
+)
+{
     companion object {
         //for database names
         val NAME = "name"
