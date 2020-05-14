@@ -3,11 +3,11 @@ package com.iuglab.tohfa.ui_elements
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -21,11 +21,7 @@ import com.iuglab.tohfa.R
 import com.iuglab.tohfa.ui_elements.admin.activities.AdminHome
 import com.iuglab.tohfa.ui_elements.user.activity.CategoriesActivity
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_login.btnLogin
-import kotlinx.android.synthetic.main.activity_login.signInButton
-import kotlinx.android.synthetic.main.activity_login.signinPassword
-import kotlinx.android.synthetic.main.activity_login.signupUsername
-import kotlinx.android.synthetic.main.activity_login.tvSignup
+import kotlin.system.exitProcess
 
 
 class LoginActivity : AppCompatActivity() , View.OnClickListener{
@@ -55,7 +51,17 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener{
 
         tvSignup.setOnClickListener {
             startActivity(Intent(this, SignUp::class.java))
+            finish()
         }
+
+        tvForgetPassword.setOnClickListener {
+            startActivity(Intent(this, LoginByFacebook::class.java))
+        }
+
+        signinByFacebook.setOnClickListener {
+            startActivity(Intent(this, LoginByFacebook::class.java))
+        }
+
 
         signInButton.setOnClickListener(this)
 
@@ -127,11 +133,7 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener{
         ///////////////////SignIn By Google ////////////
         // Button listeners
         signInButton.setOnClickListener(this)
-//            signOutButton.setOnClickListener(this)
-//            disconnectButton.setOnClickListener(this)
 
-        // [START config_signin]
-        // Configure Google Sign In
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
@@ -151,6 +153,15 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener{
         val currentUser = auth.currentUser
         updateUI(currentUser)
     }
+
+    override fun onResume() {
+        super.onResume()
+//        val name = intent.getStringExtra("name")
+//        val email = intent.getStringExtra("email")
+//        val photo = intent.getStringExtra("photo")
+
+    }
+
 
     // [START onactivityresult]
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -210,33 +221,12 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener{
                 startActivityForResult(signInIntent, RC_SIGN_IN)
                 if (!googleProgressBar.isShown) googleProgressBar.visibility = View.VISIBLE
             }
-
-//                R.id.signOutButton -> {
-//                    // Firebase sign out
-//                    auth.signOut()
-//
-//                    // Google sign out
-//                    googleSignInClient.signOut().addOnCompleteListener(this) {
-//                        updateUI(null)
-//                    }
-//                }
-
-//                R.id.disconnectButton -> {
-//                    // Firebase sign out
-//                    auth.signOut()
-//
-//                    // Google revoke access
-//                    googleSignInClient.revokeAccess().addOnCompleteListener(this) {
-//                        updateUI(null)
-//                    }
-//                }
-//
-
         }
     }
 
     fun updateUI(user: FirebaseUser?) {
         if (googleProgressBar.isShown) googleProgressBar.visibility = View.GONE
+        if (facebookProgressBar.isShown) facebookProgressBar.visibility = View.GONE
 
         val sharedPref2 = getSharedPreferences("MyPref2", Context.MODE_PRIVATE)
         val isLogin = sharedPref2.getBoolean("isLogin",false)
@@ -246,7 +236,7 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener{
                 Toast.makeText(applicationContext,"${user.displayName}",Toast.LENGTH_LONG).show()
                 Toast.makeText(applicationContext,"${user.photoUrl}",Toast.LENGTH_LONG).show()
 
-                val i = Intent(this, CategoriesActivity::class.java)
+                val i = Intent(this, Settings::class.java)
                 i.putExtra("Uemail", user.email)
                 i.putExtra("Uname", user.displayName)
                 i.putExtra("Uid", user.uid)
@@ -262,6 +252,11 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener{
                 if (!signInButton.isShown){
                     signInButton.visibility = View.VISIBLE
                 }
+                Snackbar.make(logincontiner,
+                    "Please Create Account OR SignIn By Google or Facebook",
+                    Snackbar.ANIMATION_MODE_SLIDE.and(Snackbar.LENGTH_LONG))
+                    .setAction("Create Account") {startActivity(Intent(applicationContext,SignUp::class.java))}
+                    .show()
             }
 
             }
@@ -274,6 +269,10 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener{
         editor.putBoolean(key, true)
         editor.apply()
         /////////////////////////////////////////////////////////
+    }
+
+    override fun onBackPressed() {
+
     }
 }
 

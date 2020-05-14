@@ -19,27 +19,32 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui_elements.user.activity.SearchActivity"></activity>
-        <activity android:name=".ui_elements.user.activity.DetailesActivity"></activity>
-        <activity android:name=".ui_elements.user.activity.CategoriesActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <!--
-             The API key for Google Maps-based APIs is defined as a string resource.
-             (See the file "res/values/google_maps_api.xml").
-             Note that the API key is linked to the encryption key used to sign the APK.
-             You need a different API key for each encryption key, including the release key that is used to
-             sign the APK for publishing.
-             You can define the keys for the debug and release targets in src/debug/ and src/release/.
-        -->
+
+        <activity android:name=".ui_elements.LoginByFacebook"/>
+        <activity android:name=".ui_elements.user.activity.SearchActivity" />
+        <activity android:name=".ui_elements.user.activity.DetailesActivity" />
+        <activity android:name=".ui_elements.user.activity.CategoriesActivity"/>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-
         <activity
             android:name=".ui_elements.user.activity.userMapsActivity"
             android:label="@string/title_activity_user_maps" />
@@ -52,9 +57,7 @@
         <activity android:name=".ui_elements.admin.activities.ActivityAddProduct" />
         <activity android:name=".ui_elements.admin.activities.ActivityUpdateCategory" />
         <activity android:name=".ui_elements.admin.activities.ActivityAddCategory" />
-        <activity android:name=".ui_elements.admin.activities.AdminHome">
-
-        </activity>
+        <activity android:name=".ui_elements.admin.activities.AdminHome" />
         <activity android:name=".ui_elements.ProductPosition" />
         <activity android:name=".ui_elements.Welcome" />
         <activity android:name=".ui_elements.ForgetPassword" />
@@ -62,7 +65,11 @@
         <activity android:name=".ui_elements.SignUp" />
         <activity android:name=".ui_elements.LoginActivity" />
         <activity android:name=".ui_elements.SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

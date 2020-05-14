@@ -5,6 +5,8 @@
     <string name="login">Login</string>
     <string name="title_activity_admin_maps">Map</string>
     <string name="title_activity_user_maps">Map</string>
+    <string name="facebook_app_id">244770883298813</string>
+    <string name="fb_login_protocol_scheme">fb244770883298813</string>
 
 
     <string name="style">Style</string>

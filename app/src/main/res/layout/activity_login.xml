@@ -232,4 +232,15 @@
         app:layout_constraintStart_toStartOf="@+id/signInButton"
         app:layout_constraintTop_toTopOf="@+id/signInButton" />
 
+    <ProgressBar
+        android:id="@+id/facebookProgressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/signinByFacebook"
+        app:layout_constraintEnd_toEndOf="@+id/signinByFacebook"
+        app:layout_constraintStart_toStartOf="@+id/signinByFacebook"
+        app:layout_constraintTop_toTopOf="@+id/signinByFacebook" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
