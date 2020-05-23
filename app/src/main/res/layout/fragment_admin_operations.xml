@@ -45,7 +45,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="10dp"
             android:background="@drawable/shape_card_admin_operation"
-            android:elevation="50dp"
+            android:elevation="5dp"
             android:gravity="center"
             android:orientation="vertical"
             android:outlineAmbientShadowColor="@color/accent"
@@ -65,7 +65,7 @@
                 android:fontFamily="@font/descriptionfonts"
                 android:text="ADD product"
                 android:textColor="@color/primary_text"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -75,6 +75,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             app:layout_constraintEnd_toEndOf="@+id/add_product_card"
             app:layout_constraintStart_toStartOf="@+id/add_product_card"
             app:layout_constraintTop_toBottomOf="@+id/add_product_card">
@@ -86,11 +88,12 @@
                 android:layout_marginEnd="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/shape_card_admin_operation"
-                android:elevation="50dp"
+                android:elevation="5dp"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:outlineAmbientShadowColor="@color/accent"
-                android:padding="20dp"
+                android:paddingTop="25dp"
+                android:paddingBottom="25dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/product_label">
@@ -106,7 +109,7 @@
                     android:fontFamily="@font/descriptionfonts"
                     android:text="DElETE product"
                     android:textColor="@color/primary_text"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -117,11 +120,12 @@
                 android:layout_marginStart="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/shape_card_admin_operation"
-                android:elevation="50dp"
+                android:elevation="5dp"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:outlineAmbientShadowColor="@color/accent"
-                android:padding="20dp"
+                android:paddingTop="25dp"
+                android:paddingBottom="25dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/product_label">
@@ -137,7 +141,7 @@
                     android:fontFamily="@font/descriptionfonts"
                     android:text="UPDATE product"
                     android:textColor="@color/primary_text"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </LinearLayout>
             <!--update and delete end-->
@@ -146,9 +150,11 @@
         <View
             android:id="@+id/view"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="30dp"
-            android:background="@color/divider"
+            android:layout_height="2dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="30dp"
+            android:background="@color/primary_light"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/container_update_and_delete" />
@@ -186,10 +192,11 @@
             android:id="@+id/add_category_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="10dp"
             android:background="@drawable/shape_card_admin_operation"
-            android:elevation="50dp"
+            android:elevation="5dp"
             android:gravity="center"
             android:orientation="vertical"
             android:outlineAmbientShadowColor="@color/accent"
@@ -209,7 +216,7 @@
                 android:fontFamily="@font/descriptionfonts"
                 android:text="ADD category"
                 android:textColor="@color/primary_text"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 android:textStyle="bold" />
         </LinearLayout>
         <!-- update and delete category start-->
@@ -219,6 +226,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             app:layout_constraintEnd_toEndOf="@+id/add_product_card"
             app:layout_constraintStart_toStartOf="@+id/add_product_card"
             app:layout_constraintTop_toBottomOf="@+id/add_category_card">
@@ -230,11 +239,12 @@
                 android:layout_marginEnd="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/shape_card_admin_operation"
-                android:elevation="50dp"
+                android:elevation="5dp"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:outlineAmbientShadowColor="@color/accent"
-                android:padding="20dp"
+                android:paddingTop="25dp"
+                android:paddingBottom="25dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/product_label">
@@ -250,7 +260,7 @@
                     android:fontFamily="@font/descriptionfonts"
                     android:text="DElETE category"
                     android:textColor="@color/primary_text"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -261,11 +271,12 @@
                 android:layout_marginStart="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/shape_card_admin_operation"
-                android:elevation="50dp"
+                android:elevation="5dp"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:outlineAmbientShadowColor="@color/accent"
-                android:padding="20dp"
+                android:paddingTop="25dp"
+                android:paddingBottom="25dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/product_label">
@@ -281,7 +292,7 @@
                     android:fontFamily="@font/descriptionfonts"
                     android:text="UPDATE category"
                     android:textColor="@color/primary_text"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </LinearLayout>
             <!--update and delete end-->

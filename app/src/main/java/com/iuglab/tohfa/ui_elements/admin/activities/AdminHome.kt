@@ -5,15 +5,17 @@ import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import com.iuglab.tohfa.R
-import com.iuglab.tohfa.ui_elements.admin.fragments.fragment_admin_dashboard
+import com.iuglab.tohfa.ui_elements.admin.fragments.FragmentAdminDashboard
+import com.iuglab.tohfa.ui_elements.admin.fragments.FragmentAdminOperations
 
 class AdminHome : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin_home)
-        supportFragmentManager.beginTransaction().replace(R.id.continer, fragment_admin_dashboard()).addToBackStack("frag1").commit()
+      swapFragment(FragmentAdminDashboard())
 
 
 
@@ -23,4 +25,8 @@ class AdminHome : AppCompatActivity() {
     }
 
     override fun onBackPressed() {}
+
+    private fun swapFragment(fragment : Fragment){
+        supportFragmentManager.beginTransaction().replace(R.id.continer, fragment).addToBackStack(null).commit()
+    }
 }
