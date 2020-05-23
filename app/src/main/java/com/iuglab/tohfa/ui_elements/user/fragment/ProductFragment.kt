@@ -32,7 +32,7 @@ class ProductFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         var root = inflater.inflate(R.layout.fragment_product, container, false)
-        arrayBestProduct = ArrayList()
+      /*  arrayBestProduct = ArrayList()
         arrayProduct = ArrayList()
         arrayBestProduct.add(Product())
         arrayBestProduct.add(Product())
@@ -59,7 +59,7 @@ class ProductFragment : Fragment() {
         adapter = productAdapter2(activity!!,arrayProduct)
         root.frProduct_recyclerVertical.layoutManager = GridLayoutManager(activity!!,2)
         root.frProduct_recyclerVertical.adapter = adapter
-
+*/
         
         return root
     }

@@ -1,17 +1,18 @@
 package com.iuglab.tohfa.appLogic.models
 
+import com.google.android.gms.maps.model.LatLng
 import java.net.URI
 
  class Product
     (
-//    var name: String,
-//    var category: String,
-//    var id: String?,
-//    var price: Double,
-//    var description: String,
-//    var img: URI?,
-//    var rate: Int = 0,
-//    var location: Location
+   var name: String,
+    var category: String,
+    var id: String?,
+    var price: Double,
+    var description: String,
+    var img: String?,
+    var rate: Int = 0,
+    var location: LatLng
 )
 {
     companion object {
