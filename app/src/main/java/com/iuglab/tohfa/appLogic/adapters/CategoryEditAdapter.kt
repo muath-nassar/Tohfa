@@ -33,8 +33,7 @@ class CategoryEditAdapter(var context: Context, var data: MutableList<Category>)
 
     override fun onBindViewHolder(holder: CategoryEditAdapter.MyViewHolder, position: Int) {
         holder.categoryTitle.text = data[position].name
-        val pictest = "https://images.ctfassets.net/od02wyo8cgm5/fLpPmFnAsyEx7cr2bAR8U/2556b0732cc461b9993c34b2a2591314/cloudswift-ss20-ivy_jungle-m-g1.png?w=500&h=500&fl=progressive&q=91&bg=rgb:f7f7f7&fm=jpg"
-        Glide.with(context).load(pictest).into(holder.categoryImage)
+        Glide.with(context).load(data[position].img).into(holder.categoryImage)
 
     }
 }
