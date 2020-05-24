@@ -1,7 +1,7 @@
 package com.iuglab.tohfa.appLogic.models
 
 import com.google.android.gms.maps.model.LatLng
-import java.net.URI
+
 
  class Product
     (
@@ -12,7 +12,9 @@ import java.net.URI
     var description: String,
     var img: String?,
     var rate: Int = 0,
+   var purchaseTimes : Int?,
     var location: LatLng
+
 )
 {
     companion object {
@@ -25,5 +27,7 @@ import java.net.URI
         val IMAGE = "image"
         val RATE = "rate"
         val LOCATION = "location"
+        val PURCHASE_TIMES = "purchaseTimes"
+
     }
 }
