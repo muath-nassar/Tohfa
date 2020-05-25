@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
@@ -47,11 +48,11 @@ class ActivityAddCategory : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        btnAddCategory.setOnClickListener {
+        btnAddCategory.setOnClickListener {it
 
             val bitmap = (imgCategory.drawable as BitmapDrawable).bitmap
             val baos = ByteArrayOutputStream()
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos)
+            bitmap.compress(Bitmap.CompressFormat.PNG, 50, baos)
             val data = baos.toByteArray()
             dialog.setMessage("Uploading ...")
             dialog.setTitle("Wait")
@@ -69,12 +70,15 @@ class ActivityAddCategory : AppCompatActivity() {
                 // ...
                 childRef.downloadUrl.addOnSuccessListener {
                     uri ->
+
                     val categoryName: String = etCategoryName.text.toString()
                     val categoryImage = uri.toString()
                     val category = hashMapOf(Category.NAME to categoryName, Category.IMAGE to categoryImage)
                     db.collection("categories").add(category).addOnSuccessListener {
+                        Snackbar.make(btnAddCategory,"Done, $categoryName is added successfully",Snackbar.LENGTH_SHORT).show()
                         Log.e(TAG,"category $categoryName is added to firestore")
-                    }.addOnFailureListener { exception -> Log.e(TAG,exception.message) }
+                    }.addOnFailureListener { exception -> Log.e(TAG,exception.message)
+                    Snackbar.make(btnAddCategory,"oobs!! smothering went wrong ",Snackbar.LENGTH_SHORT).show()}
                 }
                 dialog.cancel()
             }
