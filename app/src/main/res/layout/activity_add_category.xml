@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui_elements.admin.activities.ActivityAddCategory">
+    tools:context=".ui_elements.admin.activities.ActivityAddCategory"
+    android:theme="@style/MaterialStyle">
     <include layout="@layout/toolbar_admin" />
    <LinearLayout
        android:layout_centerInParent="true"
@@ -15,7 +16,7 @@
 
        <!--name of category-->
        <ImageView
-           android:id="@+id/imgCategoryUpdate"
+           android:id="@+id/imgCategory"
            android:layout_width="match_parent"
            android:layout_height="330dp"
            android:scaleType="centerCrop"
@@ -53,7 +54,7 @@
 
 
            <com.google.android.material.textfield.TextInputEditText
-               android:id="@+id/tvCategoryName"
+               android:id="@+id/etCategoryName"
                android:layout_width="match_parent"
                android:layout_height="65dp"
                android:fontFamily="@font/titlesfont"
