@@ -29,7 +29,8 @@ class ActivityShowCategoriesForAdmin : AppCompatActivity() {
                     categories.add(
                         Category(
                             document.getString(Category.NAME)!!,
-                            document.getString(Category.IMAGE)
+                            document.getString(Category.IMAGE),
+                            document.id
                         )
                     )
                 }

@@ -1,7 +1,10 @@
 package com.iuglab.tohfa.ui_elements.admin.activities
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -37,8 +40,29 @@ class adminMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
 
         // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        val gaza = LatLng(31.501288, 34.433872)
+        mMap.addMarker(MarkerOptions().position(gaza).title("Marker in Sydney"))
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(gaza,14f))
+        mMap.setOnMapClickListener { latLng ->
+            val lat = latLng.latitude.toString()
+            val lng = latLng.longitude.toString()
+            AlertDialog.Builder(this).setTitle("Confirm selection").
+            setMessage("You have selected the point lat = $lat , lng = $lng\n please confirm selection.").setPositiveButton("Accept",{_,_ ->
+                val i = Intent(this,ActivityAddProduct::class.java)
+                i.putExtra("lat",lat)
+                i.putExtra("lng",lng)
+                val name = intent.getStringExtra("pName")
+                val price = intent.getStringExtra("pPrice")
+                val desc = intent.getStringExtra("pDescription")
+                val cat = intent.getStringExtra("pCategory")
+                val img = intent.getParcelableExtra<Uri>("pImage")
+                i.putExtra("pName",name)
+                i.putExtra("pPrice",price)
+                i.putExtra("pDescription", desc)
+                i.putExtra("pCategory",cat)
+                i.putExtra("pImage",img)
+                startActivity(i)
+            }).setNegativeButton("Decline",null).show()
+        }
     }
 }

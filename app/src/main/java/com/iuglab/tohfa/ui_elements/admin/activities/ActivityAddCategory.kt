@@ -23,6 +23,7 @@ import com.karumi.dexter.listener.PermissionGrantedResponse
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
 import kotlinx.android.synthetic.main.activity_add_category.*
+import kotlinx.android.synthetic.main.activity_update_category.*
 import kotlinx.android.synthetic.main.toolbar_admin.*
 import java.io.ByteArrayOutputStream
 import java.util.*
@@ -30,7 +31,7 @@ import kotlin.collections.HashMap
 
 
 class ActivityAddCategory : AppCompatActivity() {
-  lateinit var dialog : ProgressDialog
+    lateinit var dialog: ProgressDialog
     val TAG = "mzn"
     var imgUrI: Uri? = null
     val db = Firebase.firestore
@@ -41,56 +42,71 @@ class ActivityAddCategory : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_category)
         setSupportActionBar(toolbar)
-        toolbar.title = "UPDATE CATEGORY" //customize title
+        toolbar.title = "ADD CATEGORY" //customize title
         dialog = ProgressDialog(this)
 
     }
 
     override fun onResume() {
         super.onResume()
-        btnAddCategory.setOnClickListener {it
+        btnAddCategory.setOnClickListener {
+            if (imgUrI != null && etCategoryNameUpdate.text.toString().isNotEmpty()) {
+                val bitmap = (imgCategory.drawable as BitmapDrawable).bitmap
+                val baos = ByteArrayOutputStream()
+                bitmap.compress(Bitmap.CompressFormat.PNG, 50, baos)
+                val data = baos.toByteArray()
+                dialog.setMessage("Uploading ...")
+                dialog.setTitle("Wait")
+                dialog.show()
+                dialog.setCancelable(false)
+                dialog.show()
+                val generatedName = generateRandomeName()
+                val childRef = categoryFolder.child(generatedName)
+                val uploadTask = childRef.putBytes(data)
+                uploadTask.addOnFailureListener { exception ->
+                    Log.e(TAG, exception.message)
+                    dialog.cancel()
+                }.addOnSuccessListener {
+                    // taskSnapshot.metadata contains file metadata such as size, content-type, etc.
+                    // ...
+                    childRef.downloadUrl.addOnSuccessListener { uri ->
 
-            val bitmap = (imgCategory.drawable as BitmapDrawable).bitmap
-            val baos = ByteArrayOutputStream()
-            bitmap.compress(Bitmap.CompressFormat.PNG, 50, baos)
-            val data = baos.toByteArray()
-            dialog.setMessage("Uploading ...")
-            dialog.setTitle("Wait")
-            dialog.show()
-            dialog.setCancelable(false)
-            dialog.show()
-            val generatedName = generateRandomeName()
-            val childRef = categoryFolder.child(generatedName)
-            val uploadTask = childRef.putBytes(data)
-            uploadTask.addOnFailureListener { exception ->
-                Log.e(TAG, exception.message)
-                dialog.cancel()
-            }.addOnSuccessListener {
-                // taskSnapshot.metadata contains file metadata such as size, content-type, etc.
-                // ...
-                childRef.downloadUrl.addOnSuccessListener {
-                    uri ->
-
-                    val categoryName: String = etCategoryName.text.toString()
-                    val categoryImage = uri.toString()
-                    val category = hashMapOf(Category.NAME to categoryName, Category.IMAGE to categoryImage)
-                    db.collection("categories").add(category).addOnSuccessListener {
-                        Snackbar.make(btnAddCategory,"Done, $categoryName is added successfully",Snackbar.LENGTH_SHORT).show()
-                        Log.e(TAG,"category $categoryName is added to firestore")
-                    }.addOnFailureListener { exception -> Log.e(TAG,exception.message)
-                    Snackbar.make(btnAddCategory,"oobs!! smothering went wrong ",Snackbar.LENGTH_SHORT).show()}
+                        val categoryName: String = etCategoryName.text.toString()
+                        val categoryImage = uri.toString()
+                        val category = hashMapOf(
+                            Category.NAME to categoryName,
+                            Category.IMAGE to categoryImage
+                        )
+                        db.collection("categories").add(category).addOnSuccessListener {
+                            Snackbar.make(
+                                btnAddCategory,
+                                "Done, $categoryName is added successfully",
+                                Snackbar.LENGTH_SHORT
+                            ).show()
+                            Log.e(TAG, "category $categoryName is added to firestore")
+                        }.addOnFailureListener { exception ->
+                            Log.e(TAG, exception.message)
+                            Snackbar.make(
+                                btnAddCategory,
+                                "oobs!! smothering went wrong ",
+                                Snackbar.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+                    dialog.cancel()
                 }
-                dialog.cancel()
-            }
 
+
+            }
         }
         imgCategory.setOnClickListener {
             Dexter.withActivity(this)
                 .withPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE)
                 .withListener(object : PermissionListener {
                     override fun onPermissionGranted(response: PermissionGrantedResponse) {
-                        val i = Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-                        startActivityForResult(i,100)
+                        val i =
+                            Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                        startActivityForResult(i, 100)
 
                     }
 
@@ -110,11 +126,12 @@ class ActivityAddCategory : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode== Activity.RESULT_OK && requestCode == 100){
+        if (resultCode == Activity.RESULT_OK && requestCode == 100) {
             imgUrI = data!!.data
             imgCategory.setImageURI(imgUrI)
         }
     }
+
     private fun generateRandomeName(): String {
         return System.currentTimeMillis().toString() + RandomString.getAlphaNumericString(5)
     }
@@ -150,13 +167,5 @@ object RandomString {
         return sb.toString()
     }
 
-/*    @JvmStatic
-    fun main(args: Array<String>) {
 
-        // Get the size n
-        val n = 20
-
-        // Get and display the alphanumeric string
-        println(getAlphaNumericString(n))
-    }*/
 }

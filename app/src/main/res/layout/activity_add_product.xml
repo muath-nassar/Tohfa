@@ -41,6 +41,7 @@
 
                     <!-- Media -->
                     <ImageView
+                        android:id="@+id/imgProduct"
                         android:layout_width="match_parent"
                         android:layout_height="120dp"
                         android:scaleType="fitCenter"
@@ -87,7 +88,7 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tvProductName"
+                    android:id="@+id/etProductName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/titlesfont"
@@ -118,7 +119,7 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tvProductPrice"
+                    android:id="@+id/etProductPrice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/titlesfont"
@@ -145,6 +146,7 @@
                 app:boxStrokeWidth="2dp">
 
                 <AutoCompleteTextView
+                    android:id="@+id/etCategory"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/titlesfont"
@@ -176,12 +178,14 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tvProductLocation"
+                    android:id="@+id/etProductLocation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="true"
                     android:fontFamily="@font/titlesfont"
                     android:inputType="numberDecimal"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:focusable="true" />
 
             </com.google.android.material.textfield.TextInputLayout>
             <!--description-->
@@ -201,7 +205,7 @@
                 app:strokeWidth="2dp">
 
                 <EditText
-                    android:id="@+id/tvDescription"
+                    android:id="@+id/etDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
