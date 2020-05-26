@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="@dimen/_10sdp"
     app:cardCornerRadius="@dimen/_15sdp"
     app:cardElevation="@dimen/_3sdp"
-    android:id="@+id/categories_item_layout3_card">
+    android:id="@+id/varieties_item2_layout_cardView">
 
     <RelativeLayout
-        android:layout_width="@dimen/_130sdp"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/_180sdp"
         android:orientation="vertical"
         android:background="@drawable/shape_detailes_img_background">
 
         <FrameLayout
-            android:id="@+id/categories_item_layout3_fram"
+            android:id="@+id/categories_item2_layout3_fram"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_120sdp"
             >
@@ -24,7 +25,7 @@
                 android:layout_height="@dimen/_20sdp"
                 android:layout_gravity="center"/>
             <ImageView
-                android:id="@+id/categories_item_layout3_img"
+                android:id="@+id/categories_item2_layout3_img"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"/>
@@ -35,10 +36,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_below="@+id/categories_item_layout3_fram"
+            android:layout_below="@+id/categories_item2_layout3_fram"
             android:gravity="center">
             <TextView
-                android:id="@+id/categories_item_layout3_title"
+                android:id="@+id/categories_item2_layout3_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
@@ -48,20 +49,20 @@
                 />
 
             <TextView
-                android:id="@+id/categories_item_layout3_cost"
+                android:id="@+id/categories_item2_layout3_cost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="$"
                 android:fontFamily="@font/titlesfont"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12ssp"
-               />
+                />
         </LinearLayout>
 
 
 
         <ImageView
-            android:id="@+id/categories_item_layout3_btn_favorite"
+            android:id="@+id/categories_item2_layout3_btn_favorite"
             android:layout_width="@dimen/_25sdp"
             android:layout_height="@dimen/_25sdp"
             android:src="@drawable/ic_favorite_border"

@@ -2,6 +2,8 @@ package com.iuglab.tohfa.ui_elements.user.activity
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -32,12 +34,10 @@ class CategoriesActivity : AppCompatActivity() {
 
     private fun createTabIcons() {
         val tabOne = LayoutInflater.from(this).inflate(R.layout.custom_tab, null) as TextView
-        tabOne.text = "Varieties"
         tabOne.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_variters, 0, 0)
         categories_tabs.getTabAt(0)!!.setCustomView(tabOne)
 
         val tabTwo = LayoutInflater.from(this).inflate(R.layout.custom_tab, null) as TextView
-        tabTwo.text = "Products"
         tabTwo.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_product, 0, 0)
         categories_tabs.getTabAt(1)!!.setCustomView(tabTwo)
 
@@ -76,6 +76,10 @@ class CategoriesActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
 
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return super.onOptionsItemSelected(item)
     }
 
 }

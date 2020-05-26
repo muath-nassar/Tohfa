@@ -10,6 +10,7 @@
     android:layout_marginEnd="@dimen/_10sdp"
     app:cardCornerRadius="@dimen/_12sdp"
     app:cardElevation="@dimen/_2sdp"
+    android:id="@+id/categories_item_layout_cardView"
     >
 
     <LinearLayout
@@ -19,11 +20,21 @@
         android:orientation="vertical"
         android:background="@drawable/shape_categories_card_background"
        >
-        <ImageView
-            android:id="@+id/categories_item_img"
+
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_85sdp"
-            android:src="@drawable/ic_applogo"/>
+            android:layout_height="@dimen/_85sdp">
+            <ProgressBar
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_gravity="center" />
+            <ImageView
+                android:id="@+id/categories_item_img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"/>
+        </FrameLayout>
+
         <TextView
             android:id="@+id/categories_item_txt"
             android:layout_width="wrap_content"

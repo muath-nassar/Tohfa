@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.iuglab.tohfa">
-
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality.
+    -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+
     <uses-feature android:name="android.hardware.screen.portrait" />
 
     <application
@@ -32,13 +37,20 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
+
         <activity android:name=".ui_elements.LoginByFacebook"/>
         <activity android:name=".ui_elements.user.activity.SearchActivity" />
         <activity android:name=".ui_elements.user.activity.DetailesActivity" />
         <activity android:name=".ui_elements.user.activity.CategoriesActivity"/>
-        <meta-data android:name="com.google.android.geo.API_KEY" android:value="@string/google_maps_key" />
-        <activity android:name=".ui_elements.user.activity.userMapsActivity" android:label="@string/title_activity_user_maps"/>
-        <activity android:name=".ui_elements.admin.activities.adminMapsActivity" android:label="@string/title_activity_admin_maps" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+        <activity
+            android:name=".ui_elements.user.activity.userMapsActivity"
+            android:label="@string/title_activity_user_maps" />
+        <activity
+            android:name=".ui_elements.admin.activities.adminMapsActivity"
+            android:label="@string/title_activity_admin_maps" />
         <activity android:name=".ui_elements.admin.activities.ActivityShowProductForAdmin" />
         <activity android:name=".ui_elements.admin.activities.ActivityShowCategoriesForAdmin" />
         <activity android:name=".ui_elements.admin.activities.ActivityUpdateProduct" />
@@ -49,9 +61,7 @@
         <activity android:name=".ui_elements.ProductPosition" />
         <activity android:name=".ui_elements.Welcome" />
         <activity android:name=".ui_elements.ForgetPassword" />
-        <activity android:name=".ui_elements.Settings">
-
-        </activity>
+        <activity android:name=".ui_elements.Settings" />
         <activity android:name=".ui_elements.SignUp" />
         <activity android:name=".ui_elements.LoginActivity" />
         <activity android:name=".ui_elements.SplashScreen">

@@ -13,7 +13,6 @@
             android:id="@+id/search_item_img"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_160sdp"
-            android:src="#f00"
             android:layout_centerHorizontal="true"
             android:layout_alignParentTop="true"
             />

@@ -6,7 +6,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="@dimen/_15sdp"
     app:cardElevation="@dimen/_1sdp"
-    android:layout_margin="@dimen/_10sdp">
+    android:layout_margin="@dimen/_10sdp"
+    android:id="@+id/categories_item2_card">
 
     <RelativeLayout
         android:layout_width="@dimen/_200sdp"
