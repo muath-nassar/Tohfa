@@ -74,12 +74,14 @@ class ActivityAddProduct : AppCompatActivity() {
                 val desc = intent.getStringExtra("pDescription")
                 val cat = intent.getStringExtra("pCategory")
                 val img = intent.getParcelableExtra<Uri>("pImage")
+
                 etCategory.setText(cat)
                 etProductName.setText(name)
                 etProductPrice.setText(price)
                 etDescription.setText(desc)
                 if (img!= null ){
                     imgProduct.setImageURI(img)
+                    hasImage = true
                 }
 
             } catch (e: Exception) {
@@ -97,6 +99,7 @@ class ActivityAddProduct : AppCompatActivity() {
             i.putExtra("pCategory",etCategory.text.toString())
             i.putExtra("pDescription",etDescription.text.toString())
             i.putExtra("pImage",imageUri)
+            i.putExtra("id","add")
             startActivity(i)
 
         }
@@ -163,6 +166,8 @@ class ActivityAddProduct : AppCompatActivity() {
                                 Snackbar.LENGTH_SHORT
                             ).show()
                             Log.e(TAG, "category $name is added to firestore")
+                            startActivity(Intent(this,ActivityShowProductForAdmin::class.java))
+                            finish()
                         }.addOnFailureListener { exception ->
                             Log.e(TAG, exception.message)
                             Snackbar.make(

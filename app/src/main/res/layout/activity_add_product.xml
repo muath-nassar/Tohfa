@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@style/MaterialStyle"
-    tools:context=".ui_elements.admin.activities.ActivityUpdateCategory">
+    tools:context=".ui_elements.admin.activities.ActivityAddProduct">
 
     <include
         android:id="@+id/pToolbar"
@@ -130,7 +130,6 @@
             <!--category-->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/spCategory"
-
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
