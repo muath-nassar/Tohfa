@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -24,6 +25,21 @@ class Settings : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
+
+        switchDarkTheme.setOnCheckedChangeListener { buttonView, isChecked ->
+            //////   SharedPreferences For Dark Mode ///////////
+            val sharedPref = getSharedPreferences("isDark", Context.MODE_PRIVATE)
+            val editor = sharedPref.edit()
+
+            if(isChecked){
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                editor.putBoolean("isDark", true).apply()
+            }else{
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                editor.remove("isDark").apply()
+            }
+        }
+
         val user = FirebaseAuth.getInstance().currentUser
         Toast.makeText(applicationContext,"${user!!.uid} - ${user.email} - ${user.displayName}",Toast.LENGTH_LONG).show()
         // To Get Account Image
@@ -40,6 +56,7 @@ class Settings : AppCompatActivity() {
 //                LoginActivity().updateUI(null)
                 user.delete()
                 removeSharedPrefs("MyPref2","isLogin")
+                removeSharedPrefs("MyPref4","isLoginByFacebook")
                 startActivity(Intent(applicationContext,LoginActivity::class.java))
                 finish()
 
@@ -53,6 +70,7 @@ class Settings : AppCompatActivity() {
 //                LoginActivity().updateUI(null)
                 FirebaseAuth.getInstance().signOut()
                 removeSharedPrefs("MyPref2","isLogin")
+                removeSharedPrefs("MyPref4","isLoginByFacebook")
                 startActivity(Intent(applicationContext,LoginActivity::class.java))
                 finish()
 

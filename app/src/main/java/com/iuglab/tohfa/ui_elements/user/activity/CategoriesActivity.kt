@@ -21,11 +21,8 @@ class CategoriesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_categories)
-        Toast.makeText(applicationContext,"\n  CategoriesActivity    \n", Toast.LENGTH_LONG).show()
-
 
         setSupportActionBar(categories_toolbar)
-
 //       val tabPagerAdapter = TabPagerAdapter(this,supportFragmentManager)
 //        categories_view_pager.adapter = tabPagerAdapter
         createViewPager(categories_view_pager)

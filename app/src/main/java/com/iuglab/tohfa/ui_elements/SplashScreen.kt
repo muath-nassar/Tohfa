@@ -8,6 +8,7 @@ import android.view.Window
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.iuglab.tohfa.R
 import com.iuglab.tohfa.ui_elements.admin.activities.AdminHome
 import com.iuglab.tohfa.ui_elements.user.activity.CategoriesActivity
@@ -18,6 +19,12 @@ class SplashScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         this.window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.splash_screen)
+
+        val sharedPref5 = getSharedPreferences("isDark", Context.MODE_PRIVATE)
+        val isDark = sharedPref5.getBoolean("isDark",false)
+        if (isDark){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
 
         Handler().postDelayed({
             val sharedPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE)
@@ -33,24 +40,22 @@ class SplashScreen : AppCompatActivity() {
                 val sharedPref4 = getSharedPreferences("MyPref4", Context.MODE_PRIVATE)
                 val isLoginByFacebook = sharedPref4.getBoolean("isLoginByFacebook",false)
 
+
+
                 when {
                     isLogin -> {
                         startActivity(Intent(applicationContext, CategoriesActivity::class.java))
-                        Toast.makeText(applicationContext, "\n  Google Login Successfully    \n", Toast.LENGTH_LONG).show()
                     }
                     isLoginByFacebook -> {
                         startActivity(Intent(applicationContext, CategoriesActivity::class.java))
-                        Toast.makeText(applicationContext,"\n  Facebook Login Successfully    \n", Toast.LENGTH_LONG).show()
                     }
                     isAdmin -> {
                         startActivity(Intent(applicationContext,AdminHome::class.java))
-                        Toast.makeText(applicationContext,"\n  Admin Login Successfully    \n", Toast.LENGTH_LONG).show()
                     }
                     else -> {
                         startActivity(Intent(applicationContext,LoginActivity::class.java))
                     }
                 }
-
 
             }else{
                 startActivity(Intent(applicationContext,Welcome::class.java))

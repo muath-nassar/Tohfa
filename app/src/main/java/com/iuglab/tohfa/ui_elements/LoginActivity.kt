@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.util.Patterns
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -73,12 +74,12 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener{
         }
 
         btnLogin.setOnClickListener { it ->
-            if (signupUsername.text!!.isNotEmpty()) {
+            if (signinEmail.text!!.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(signinEmail.text.toString()).matches()) {
                 if (signinPassword.text!!.isNotEmpty()) {
                     pd.show()
 
                     auth = FirebaseAuth.getInstance()
-                    val loginresult = auth.signInWithEmailAndPassword(signupUsername.text.toString(), signinPassword.text.toString())
+                    val loginresult = auth.signInWithEmailAndPassword(signinEmail.text.toString(), signinPassword.text.toString())
 
                     loginresult.addOnCompleteListener {
                         pd.dismiss()
@@ -90,7 +91,7 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener{
                             val uid = result.uid
                             Log.e("user", "$email - $uid ")
 
-                            if (email == "admin@tohfa.com" && signinPassword.text.toString() == "ADMINADMIN" && uid == "eRSttuzNI1ay4hoS2X6awNdFe8z2"){
+                            if (email == getString(R.string.AdminEmail) && signinPassword.text.toString() == getString(R.string.AdminPass) && uid == getString(R.string.AdminKey)){
                                 createSharedPrefs("MyPref3","isAdmin")
                                 val i = Intent(this, AdminHome::class.java)
                                 i.putExtra("email", email)
@@ -119,14 +120,11 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener{
                     }
 
                 }else{
-                    signinPassword.error = "Please ,Enter Your Password Here"
+                    signinPassword.error = "Please Enter Your Password Here"
                 }
             }else{
-                signupUsername.error = "Please ,Enter Your Email Here"
+                signinEmail.error = "Please Enter Your Email Here"
             }
-
-
-
         }
 
 
@@ -152,14 +150,6 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener{
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
         updateUI(currentUser)
-    }
-
-    override fun onResume() {
-        super.onResume()
-//        val name = intent.getStringExtra("name")
-//        val email = intent.getStringExtra("email")
-//        val photo = intent.getStringExtra("photo")
-
     }
 
 
@@ -236,11 +226,11 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener{
                 Toast.makeText(applicationContext,"${user.displayName}",Toast.LENGTH_LONG).show()
                 Toast.makeText(applicationContext,"${user.photoUrl}",Toast.LENGTH_LONG).show()
 
-                val i = Intent(this, Settings::class.java)
-                i.putExtra("Uemail", user.email)
-                i.putExtra("Uname", user.displayName)
-                i.putExtra("Uid", user.uid)
-                i.putExtra("Uphoto", user.phoneNumber)
+                val i = Intent(this, CategoriesActivity::class.java)
+                i.putExtra("email", user.email)
+                i.putExtra("name", user.displayName)
+                i.putExtra("id", user.uid)
+                i.putExtra("photo", user.phoneNumber)
                 startActivity(i)
 
                 if (signInButton.isShown){
@@ -271,9 +261,7 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener{
         /////////////////////////////////////////////////////////
     }
 
-    override fun onBackPressed() {
-
-    }
+    override fun onBackPressed() {}
 }
 
 

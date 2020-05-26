@@ -110,12 +110,7 @@ class LoginByFacebook : AppCompatActivity(){
             val sharedPref = getSharedPreferences("MyPref4", Context.MODE_PRIVATE)
             val editor = sharedPref.edit()
             editor.putBoolean("isLoginByFacebook", true)
-            val isCreated = editor.commit()
-            if (isCreated){
-                Toast.makeText(applicationContext,"\n  MyPref4 Created Successfully    \n", Toast.LENGTH_LONG).show()
-            }else{
-                Toast.makeText(applicationContext,"\n  MyPref4 Created Failed!   \n", Toast.LENGTH_LONG).show()
-            }
+            editor.apply()
             /////////////////////////////////////////////////////////
 
             val name = user.displayName

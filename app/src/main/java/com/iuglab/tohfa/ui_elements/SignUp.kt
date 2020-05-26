@@ -6,9 +6,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.util.Patterns
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.iuglab.tohfa.R
+import com.iuglab.tohfa.ui_elements.user.activity.CategoriesActivity
 import kotlinx.android.synthetic.main.activity_sign_up.*
 
 class SignUp : AppCompatActivity() {
@@ -34,7 +36,7 @@ class SignUp : AppCompatActivity() {
 
         btnSignup.setOnClickListener {
             if (signupUsername.text!!.isNotEmpty()) {
-                if (signupEmail.text!!.isNotEmpty()) {
+                if (signupEmail.text!!.isNotEmpty()  && Patterns.EMAIL_ADDRESS.matcher(signupEmail.text.toString()).matches()) {
                     if (signupPassword.text!!.isNotEmpty() && signupPassword.text.toString().length >= 8) {
                         if (signinPassword.text!!.isNotEmpty()) {
                             if (signinPassword.text.toString() == signupPassword.text.toString()) {
@@ -59,8 +61,9 @@ class SignUp : AppCompatActivity() {
 //                        val img = result.photoUrl.toString()
 
                                         Log.e("user", "$email -$id -$name")
-                                        val i = Intent(this, Settings::class.java)
+                                        val i = Intent(this, CategoriesActivity::class.java)
                                         i.putExtra("email", email)
+                                        i.putExtra("name", name)
                                         i.putExtra("id", id)
                                         startActivity(i)
 
