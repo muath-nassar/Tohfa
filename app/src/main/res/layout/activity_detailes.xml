@@ -89,6 +89,8 @@
            />
     </FrameLayout>
 
+
+
     <TextView
         android:id="@+id/detailes_txt_name"
         android:layout_width="wrap_content"
@@ -198,6 +200,14 @@
         android:layout_marginEnd="@dimen/_15sdp"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginBottom="@dimen/_10sdp"/>
+
+    <TextView
+        android:id="@+id/detailes_txt_clicked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/click_on_the_map_to_expand"
+        android:layout_gravity="center_horizontal"
+        android:textSize="@dimen/_10ssp"/>
 
 
     <ImageView

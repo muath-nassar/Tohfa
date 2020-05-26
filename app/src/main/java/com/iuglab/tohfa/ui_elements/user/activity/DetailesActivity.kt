@@ -1,5 +1,6 @@
 package com.iuglab.tohfa.ui_elements.user.activity
 
+import android.content.Intent
 import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -101,6 +102,13 @@ lateinit var id :String
             }
         }
 
+        detailes_txt_clicked.setOnClickListener{
+           var intent = Intent(applicationContext,MapsActivity::class.java)
+            intent.putExtra("lat",lat)
+            intent.putExtra("lon",lon)
+            intent.putExtra("title",name)
+            startActivity(intent)
+        }
 
     }
 
@@ -110,7 +118,7 @@ lateinit var id :String
         mMap.uiSettings.isCompassEnabled = true
         val myPosition = LatLng(lat,lon)
         mMap.addMarker(MarkerOptions().position(myPosition).title(name))
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myPosition,10f))
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myPosition,13f))
     }
 
 }
