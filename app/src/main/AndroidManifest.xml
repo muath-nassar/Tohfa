@@ -40,8 +40,15 @@
 
         <activity android:name=".ui_elements.LoginByFacebook"/>
         <activity android:name=".ui_elements.user.activity.SearchActivity" />
+        <activity android:name=".ui_elements.user.activity.varietiesActivity" />
         <activity android:name=".ui_elements.user.activity.DetailesActivity" />
-        <activity android:name=".ui_elements.user.activity.CategoriesActivity"/>
+        <activity android:name=".ui_elements.user.activity.CategoriesActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
@@ -65,11 +72,7 @@
         <activity android:name=".ui_elements.SignUp" />
         <activity android:name=".ui_elements.LoginActivity" />
         <activity android:name=".ui_elements.SplashScreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

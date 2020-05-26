@@ -106,11 +106,11 @@ lateinit var id :String
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
+        mMap.mapType = GoogleMap.MAP_TYPE_TERRAIN
         mMap.uiSettings.isCompassEnabled = true
         val myPosition = LatLng(lat,lon)
         mMap.addMarker(MarkerOptions().position(myPosition).title(name))
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myPosition,14f))
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myPosition,10f))
     }
 
 }
