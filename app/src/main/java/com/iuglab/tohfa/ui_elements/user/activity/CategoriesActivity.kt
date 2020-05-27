@@ -1,24 +1,29 @@
 package com.iuglab.tohfa.ui_elements.user.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.SearchView
+import android.widget.SearchView.OnQueryTextListener
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
-import com.h.alrekhawi.tabbediugexample.adapter.TabPagerAdapter
 import com.iuglab.tohfa.R
+import com.iuglab.tohfa.ui_elements.Settings
+import com.iuglab.tohfa.ui_elements.user.adapter.productAdapter2
 import com.iuglab.tohfa.ui_elements.user.fragment.ProductFragment
 import com.iuglab.tohfa.ui_elements.user.fragment.VarietiesFragment
 import kotlinx.android.synthetic.main.activity_categories.*
 
 
-class CategoriesActivity : AppCompatActivity() {
+class CategoriesActivity : AppCompatActivity(){
+
+       var productFragment : ProductFragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +35,9 @@ class CategoriesActivity : AppCompatActivity() {
         createViewPager(categories_view_pager)
         categories_tabs.setupWithViewPager(categories_view_pager)
         createTabIcons()
+
+        productFragment = ProductFragment()
+
     }
 
     private fun createTabIcons() {
@@ -78,7 +86,26 @@ class CategoriesActivity : AppCompatActivity() {
 
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.categoerires_menu2,menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+
+            R.id.categories_icon_search -> {
+
+                var intent = Intent(applicationContext,SearchActivity::class.java)
+                startActivity(intent)
+            }
+
+            R.id.categories_icon_setting ->{
+                var intent = Intent(applicationContext, Settings::class.java)
+                startActivity(intent)
+            }
+
+        }
         return super.onOptionsItemSelected(item)
     }
 

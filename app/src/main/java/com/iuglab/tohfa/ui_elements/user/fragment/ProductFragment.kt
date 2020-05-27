@@ -3,9 +3,7 @@ package com.iuglab.tohfa.ui_elements.user.fragment
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.core.util.rangeTo
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -33,7 +31,7 @@ class ProductFragment : Fragment() , productAdapter2.onClickProduct , productAda
     lateinit var arrayBestProduct : ArrayList<Product>
     lateinit var arrayProduct : ArrayList<Product>
     lateinit var bestAdapter : productAdapter
-    lateinit var adapter : productAdapter2
+     lateinit var adapter : productAdapter2
     var db = FirebaseFirestore.getInstance()
     var TAG = "osm"
 
@@ -45,7 +43,6 @@ class ProductFragment : Fragment() , productAdapter2.onClickProduct , productAda
         var root = inflater.inflate(R.layout.fragment_product, container, false)
         arrayBestProduct = ArrayList()
         arrayProduct = ArrayList()
-
 
         db.collection("products")
             .limit(5).orderBy(Product.PURCHASE_TIMES,Query.Direction.DESCENDING)
@@ -151,6 +148,7 @@ class ProductFragment : Fragment() , productAdapter2.onClickProduct , productAda
         intent.putExtra("lon",lon)
         startActivity(intent)
     }
+
 
 
 }

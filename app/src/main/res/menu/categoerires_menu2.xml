@@ -2,10 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
+
     <item
-        android:id="@+id/categories_menu2"
+        android:id="@+id/categories_icon_search"
+        android:title="@string/search"
+        android:icon="@drawable/ic_search_white"
+        app:showAsAction="never"
+     />
+
+    <item
+        android:id="@+id/categories_icon_setting"
         android:title="@string/setting"
         android:icon="@drawable/ic_settings_white"
-        app:showAsAction="ifRoom" />
-
+        app:showAsAction="never" />
 </menu>
