@@ -67,7 +67,7 @@ class FragmentAdminDashboard : Fragment() {
                     )
                     mpieData.add(entery)
                 }
-                val dataSet = PieDataSet(mpieData, "product names")
+                val dataSet = PieDataSet(mpieData, "Top sales")
                 dataSet.sliceSpace = 0f
                 dataSet.selectionShift = 5f
                 dataSet.setColors(*colors)
@@ -95,7 +95,7 @@ class FragmentAdminDashboard : Fragment() {
         pieChart.setTransparentCircleColor(Color.BLUE)
         pieChart.transparentCircleRadius = 0f
 
-        pieChart.description.text = "The most requested products"
+        pieChart.description.text = ""
         pieChart.description.textSize = 20f
 
         pieChart.animateY(1500, Easing.EaseOutCubic)
