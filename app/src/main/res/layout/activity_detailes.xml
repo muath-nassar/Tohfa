@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui_elements.user.activity.DetailesActivity"
+    android:background="@color/defultbckground"
     >
 <LinearLayout
     android:layout_width="match_parent"
@@ -206,8 +207,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/click_on_the_map_to_expand"
+        android:textColor="@color/accent"
         android:layout_gravity="center_horizontal"
-        android:textSize="@dimen/_10ssp"/>
+        android:textSize="@dimen/_10ssp"
+        android:drawableStart="@drawable/ic_zoom_out_map_fill"
+        android:lines="1"
+        android:maxLines="2"
+        android:gravity="center"/>
 
 
     <ImageView

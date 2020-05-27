@@ -1,20 +1,23 @@
 package com.iuglab.tohfa.ui_elements.user.adapter
 
 import android.app.Activity
-import android.content.Context
-import android.util.Log
+import android.text.method.MetaKeyKeyListener
+import android.text.method.TextKeyListener.clear
+import android.text.method.TextKeyListener.resetLockedMeta
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.iuglab.tohfa.R
 import com.iuglab.tohfa.appLogic.models.Product
 import com.iuglab.tohfa.ui_elements.user.databse.UserDatabase
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.categories_item_layout3.view.*
-import kotlin.properties.Delegates
 
-class productAdapter2(var activity: Activity , var products:ArrayList<Product>, val click: productAdapter2.onClickProduct?) : RecyclerView.Adapter<productAdapter2.MyViewHolder>(){
+
+class productAdapter2(var activity: Activity , var products:ArrayList<Product>, val click: productAdapter2.onClickProduct?) : RecyclerView.Adapter<productAdapter2.MyViewHolder>() {
 
     lateinit var favorite : UserDatabase
     lateinit var favorites : ArrayList<String>
@@ -104,4 +107,7 @@ class productAdapter2(var activity: Activity , var products:ArrayList<Product>, 
     interface onClickProduct{
         fun onClickProduct(position: Int)
     }
+
+
+
 }

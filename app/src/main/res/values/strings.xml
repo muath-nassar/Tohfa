@@ -29,5 +29,6 @@
     <string name="setting">Setting</string>
     <string name="title_activity_maps">Map</string>
     <string name="click_on_the_map_to_expand">Click here to enlarge</string>
+    <string name="search">Search</string>
 
 </resources>
