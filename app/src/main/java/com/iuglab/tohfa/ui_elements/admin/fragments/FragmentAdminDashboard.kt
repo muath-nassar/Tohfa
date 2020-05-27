@@ -11,11 +11,21 @@ import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.Legend.LegendForm
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.utils.ColorTemplate
+import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.iuglab.tohfa.R
+import com.iuglab.tohfa.appLogic.models.Product
 import kotlinx.android.synthetic.main.fragment_admin_dashboard.*
 import java.util.*
+import kotlin.collections.ArrayList
 
 class FragmentAdminDashboard : Fragment() {
+    val mapOfBestPurchased = mutableMapOf<String, Double>()
+    var totPurchased = 0
+    var totBest5 = 0
+    val db = Firebase.firestore
+    lateinit var pieData: PieData
 
     var colors = intArrayOf(
         Color.rgb(217, 80, 138),
@@ -26,7 +36,7 @@ class FragmentAdminDashboard : Fragment() {
         Color.rgb(66, 50, 0)
 
     )
-    lateinit var pieData: PieData
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,20 +49,32 @@ class FragmentAdminDashboard : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_admin_dashboard, container, false)
 
-        val dataSet = PieDataSet(datavalues(), "Dashboard")
-        dataSet.sliceSpace = 3f
-        dataSet.selectionShift = 5f
-        dataSet.setColors(*colors)
-        pieData = PieData(dataSet)
+
 
         return root
     }
 
     override fun onResume() {
         super.onResume()
+        db.collection("products").orderBy(Product.PURCHASE_TIMES, Query.Direction.DESCENDING)
+            .limit(5).get().addOnSuccessListener { querySnapshot ->
+                val mpieData = ArrayList<PieEntry>()
+                for (document in querySnapshot) {
+                    val entery = PieEntry(
+                        document.getDouble(Product.PURCHASE_TIMES)!!.toFloat(),
+                        document.getString(Product.NAME)
+                    )
+                    mpieData.add(entery)
+                }
+                val dataSet = PieDataSet(mpieData, "product names")
+                dataSet.sliceSpace = 0f
+                dataSet.selectionShift = 5f
+                dataSet.setColors(*colors)
+                pieData = PieData(dataSet)
+                drawpieChart()
+            }
 
-        drawpieChart()
-        drawBarChart(intArrayOf(80,100,350,108,500))
+        drawBarChart(intArrayOf(80, 100, 350, 108, 500))
     }
 
     private fun drawpieChart() {
@@ -60,36 +82,25 @@ class FragmentAdminDashboard : Fragment() {
         pieChart.dragDecelerationFrictionCoef = 0.1f
 
         pieChart.setEntryLabelTextSize(12f)
-        pieChart.setDrawEntryLabels(false)
+        pieChart.setDrawEntryLabels(true)
 
-        pieChart.centerTextRadiusPercent = 80f
+        pieChart.centerTextRadiusPercent = 0f
         pieChart.setUsePercentValues(true)
 
-        pieChart.holeRadius = 30f
+        pieChart.holeRadius = 0f
         pieChart.setHoleColor(Color.WHITE)
 
         pieChart.setTransparentCircleAlpha(30)
         pieChart.setTransparentCircleColor(Color.BLUE)
         pieChart.transparentCircleRadius = 0f
 
-
-        pieChart.description.text = "The most requested categories"
+        pieChart.description.text = "The most requested products"
         pieChart.description.textSize = 20f
 
         pieChart.animateY(1500, Easing.EaseOutCubic)
         pieChart.invalidate()
     }
 
-    private fun datavalues(): ArrayList<PieEntry>? {
-        val data = ArrayList<PieEntry>()
-        data.add(PieEntry(20f, "First"))
-        data.add(PieEntry(20f, "Second"))
-        data.add(PieEntry(20f, "Third"))
-        data.add(PieEntry(20f, "Fourth"))
-        data.add(PieEntry(20f, "Fifth"))
-
-        return data
-    }// for pieChart
 
     private fun drawBarChart(numbers: IntArray) {
 
@@ -111,15 +122,15 @@ class FragmentAdminDashboard : Fragment() {
         data.barWidth = 0.5f
 
         //
-       /* val l = chart.legend
-        l.verticalAlignment = Legend.LegendVerticalAlignment.BOTTOM
-        l.horizontalAlignment = Legend.LegendHorizontalAlignment.LEFT
-        l.orientation = Legend.LegendOrientation.HORIZONTAL
-        l.setDrawInside(false)
-        l.form = LegendForm.SQUARE
-        l.formSize = 9f
-        l.textSize = 11f
-        l.xEntrySpace = 4f*/
+        /* val l = chart.legend
+         l.verticalAlignment = Legend.LegendVerticalAlignment.BOTTOM
+         l.horizontalAlignment = Legend.LegendHorizontalAlignment.LEFT
+         l.orientation = Legend.LegendOrientation.HORIZONTAL
+         l.setDrawInside(false)
+         l.form = LegendForm.SQUARE
+         l.formSize = 9f
+         l.textSize = 11f
+         l.xEntrySpace = 4f*/
         //
 
 
