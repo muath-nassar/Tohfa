@@ -63,6 +63,7 @@ class FragmentAdminDashboard : Fragment() {
                     val entery = PieEntry(
                         document.getDouble(Product.PURCHASE_TIMES)!!.toFloat(),
                         document.getString(Product.NAME)
+
                     )
                     mpieData.add(entery)
                 }
