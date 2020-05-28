@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui_elements.admin.activities.ActivityShowProductForAdmin"
-    android:theme="@style/MaterialStyle">
+    android:theme="@style/MaterialStyle"
+    android:background="@color/defultbckground">
     <include
         android:id="@+id/pToolbar"
         layout="@layout/toolbar_admin" />
