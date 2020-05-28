@@ -118,15 +118,27 @@
             android:layout_alignParentStart="true"/>
 
         <TextView
-            android:id="@+id/detailes_txt_price"
+        android:id="@+id/detailes_txt_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="59,55"
+        android:textSize="@dimen/_25ssp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/titlesfont"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_alignParentEnd="true"/>
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="$59,55"
+            android:text="$"
             android:textSize="@dimen/_25ssp"
             android:textColor="@color/black"
             android:fontFamily="@font/titlesfont"
-            android:layout_marginEnd="@dimen/_20sdp"
-            android:layout_alignParentEnd="true"/>
+            android:layout_toStartOf="@+id/detailes_txt_price"
+            android:layout_alignBaseline="@+id/detailes_txt_price"
+            />
+
     </RelativeLayout>
 
     <TextView
@@ -240,7 +252,7 @@
             android:id="@+id/detailes_txt_contity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0"
+            android:text="@string/_1"
             android:textSize="@dimen/_15ssp"
             android:textColor="@color/black"
             android:fontFamily="@font/titlesfont"
@@ -271,6 +283,7 @@
         android:layout_height="wrap_content" >
 
         <LinearLayout
+            android:id="@+id/detailes_linear_addBascket"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_15sdp"
@@ -283,10 +296,12 @@
             android:gravity="center"
             android:background="@drawable/shape_detailes_btn_add_background">
             <ImageView
+                android:id="@+id/detailes_img_addBascket"
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
-                android:src="@drawable/ic_shopping2" />
+                android:src="@drawable/ic_add_shopping" />
             <TextView
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Add to basket" />
@@ -295,6 +310,7 @@
 
 
         <LinearLayout
+            android:id="@+id/detailes_linear_puy"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_15sdp"

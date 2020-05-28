@@ -134,7 +134,7 @@ class ProductFragment : Fragment() , productAdapter2.onClickProduct , productAda
 
     override fun onClickBestProduct(position: Int) {
         var product = arrayBestProduct[position]
-        var intent = Intent(activity!!, DetailesActivity::class.java)
+        val intent = Intent(activity!!, DetailesActivity::class.java)
         intent.putExtra("id",product.id)
         intent.putExtra("name",product.name)
         intent.putExtra("category",product.category)
@@ -142,6 +142,7 @@ class ProductFragment : Fragment() , productAdapter2.onClickProduct , productAda
         intent.putExtra("price",product.price)
         intent.putExtra("description",product.description)
         intent.putExtra("purchaseTimes",product.purchaseTimes)
+        intent.putExtra("rate",product.rate)
         var lat = product.location.latitude
         var lon = product.location.longitude
         intent.putExtra("lat",lat)

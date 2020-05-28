@@ -18,14 +18,12 @@ class searchAdapter (var activity: Activity, var products:ArrayList<Product>, va
 
     lateinit var favorite : UserDatabase
     lateinit var favorites : ArrayList<String>
-    var isFavorite : Boolean ? = null
     var productsFull = ArrayList<Product>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         var root = LayoutInflater.from(activity).inflate(R.layout.categories_item_layout3,parent,false)
         favorite = UserDatabase(activity)
         favorites = favorite.getAllKeyProduct()
-        isFavorite = false
         return MyViewHolder(root)
     }
 
@@ -38,15 +36,30 @@ class searchAdapter (var activity: Activity, var products:ArrayList<Product>, va
         Picasso.get().load(products[position].img).into(holder.img)
         holder.title.text = products[position].name
         holder.price.text = "$" + products[position].price.toString()
-        for (f in favorites){
-            if (f == products[position].id){
-                holder.heart.setImageResource(R.drawable.b_favorite)
-                isFavorite = true
+
+        if (favorite.searchAboutProduct(products[position].id!!).size > 0){
+            holder.heart.setImageResource(R.drawable.ic_favorite_black_24dp)
+        }else{
+            holder.heart.setImageResource(R.drawable.ic_favorite2)
+        }
+
+        holder.heart.setOnClickListener {
+            if (favorite.searchAboutProduct(products[position].id!!).size > 0){
+                var result = favorite.deleteProducts(products[position].id!!)
+                if(result){
+                    holder.heart.setImageResource(R.drawable.ic_favorite2)
+                }
             }else{
-                holder.heart.setImageResource(R.drawable.ic_favorite_border)
-                isFavorite = false
+                var result = favorite.insertProduct(products[position].id!!)
+                if(result){
+                    holder.heart.setImageResource(R.drawable.ic_favorite_black_24dp)
+                }
             }
         }
+
+
+
+
         holder.card.setOnClickListener {
             click!!.onClickSearchProduct(position)
         }

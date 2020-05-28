@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/_10sdp"
+    android:id="@+id/favoriteActivity_card"
     >
 
     <RelativeLayout
@@ -14,14 +15,15 @@
         <ImageView
             android:id="@+id/favorite_item_img"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_100sdp" />
+            android:layout_height="@dimen/_100sdp"
+            android:scaleType="centerCrop"/>
 
         <TextView
             android:id="@+id/favorite_item_txt_cost_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SSD"
-            android:textSize="@dimen/_20ssp"
+            android:text=""
+            android:textSize="@dimen/_15ssp"
             android:textColor="@color/black"
             android:fontFamily="@font/titlesfont"
             android:layout_below="@+id/favorite_item_img"
@@ -33,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="$99,5"
-            android:textSize="@dimen/_18ssp"
+            android:textSize="@dimen/_13ssp"
             android:textColor="@color/black"
             android:fontFamily="@font/titlesfont"
             android:layout_below="@+id/favorite_item_txt_cost_title"
@@ -42,29 +44,8 @@
             android:layout_marginTop="-15dp"
             />
 
-        <ImageView
-            android:id="@+id/favorite_item_img_buy"
-            android:layout_width="@dimen/_30sdp"
-            android:layout_height="@dimen/_30sdp"
-            android:src="@drawable/ic_dollars"
-            android:background="@drawable/shape_white_oval_background"
-            android:elevation="@dimen/_2sdp"
-            android:padding="@dimen/_5sdp"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/favorite_item_img"
-            android:layout_marginEnd="@dimen/_25sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Buy Now"
-            android:fontFamily="@font/titlesfont"
-            android:textColor="@color/primary"
-            android:layout_below="@+id/favorite_item_img_buy"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="@dimen/_20sdp"
-            />
+
+
 
         <ImageView
             android:id="@+id/favorite_item_img_delete"
@@ -76,7 +57,7 @@
             android:padding="@dimen/_5sdp"
             android:layout_alignParentEnd="true"
             android:layout_below="@+id/favorite_item_img"
-            android:layout_marginEnd="@dimen/_100sdp"
+            android:layout_marginEnd="@dimen/_40sdp"
             android:layout_marginTop="@dimen/_15sdp"
             />
 
@@ -86,9 +67,9 @@
             android:text="Delete product"
             android:fontFamily="@font/titlesfont"
             android:textColor="@color/red"
-            android:layout_below="@+id/favorite_item_img_buy"
+            android:layout_below="@+id/favorite_item_img_delete"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="@dimen/_80sdp"
+            android:layout_marginEnd="@dimen/_25sdp"
             />
 
     </RelativeLayout>

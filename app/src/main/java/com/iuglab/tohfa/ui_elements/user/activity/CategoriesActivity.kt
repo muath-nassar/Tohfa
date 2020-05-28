@@ -38,6 +38,11 @@ class CategoriesActivity : AppCompatActivity(){
 
         productFragment = ProductFragment()
 
+        categories_btn_basket.setOnClickListener {
+            var intent = Intent(this,basketActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
     private fun createTabIcons() {
@@ -100,6 +105,10 @@ class CategoriesActivity : AppCompatActivity(){
                 startActivity(intent)
             }
 
+            R.id.categories_icon_favorite ->{
+                var intent = Intent(applicationContext, favoriteActivity::class.java)
+                startActivity(intent)
+            }
             R.id.categories_icon_setting ->{
                 var intent = Intent(applicationContext, Settings::class.java)
                 startActivity(intent)

@@ -30,5 +30,29 @@
     <string name="title_activity_maps">Map</string>
     <string name="click_on_the_map_to_expand">Click here to enlarge</string>
     <string name="search">Search</string>
+    <string name="confirm_pay">Confirm the payment</string>
+    <string name="will_pay">Now you will pay | </string>
+    <string name="about"> , About </string>
+    <string name="ech_one"> , each one at a price | </string>
+    <string name="compelte">complete</string>
+    <string name="cancle">cancle</string>
+    <string name="_1">1</string>
+    <string name="items">" item | </string>
+    <string name="paying_loading">Paying Loading ...</string>
+    <string name="paying_success">Paying Success</string>
+    <string name="finish">Finish</string>
+    <string name="fail">Fail</string>
+    <string name="delete_from_basket">The product has been removed from your basket</string>
+    <string name="add_to_basket">The product has been added to your basket</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="notAdding_in_basket">You don\'t added any product in thr basket</string>
+    <string name="loading">Loading ...</string>
+    <string name="buying_success">Buying is successful</string>
+    <string name="buying_fail">Buying is fail</string>
+    <string name="favorite">Favorite</string>
+    <string name="sure_delete">Are sure delete the product ?</string>
+    <string name="added_favorite">The product was added to favorites</string>
+    <string name="remove_from_favorite">The product has been removed from favorites</string>
 
 </resources>
