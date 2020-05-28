@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui_elements.admin.activities.ActivityAddCategory"
-    android:theme="@style/MaterialStyle">
+    android:theme="@style/MaterialStyle"
+    android:background="@color/defultbckground">
     <include layout="@layout/toolbar_admin" />
    <LinearLayout
        android:layout_centerInParent="true"
