@@ -46,7 +46,7 @@
     <string name="add_to_basket">The product has been added to your basket</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-    <string name="notAdding_in_basket">You don\'t added any product in thr basket</string>
+    <string name="notAdding_in_basket">You don\'t added any product in the basket</string>
     <string name="loading">Loading ...</string>
     <string name="buying_success">Buying is successful</string>
     <string name="buying_fail">Buying is fail</string>
@@ -54,7 +54,6 @@
     <string name="sure_delete">Are sure delete the product ?</string>
     <string name="added_favorite">The product was added to favorites</string>
     <string name="remove_from_favorite">The product has been removed from favorites</string>
-    <string name="AdminKey">eRSttuzNI1ay4hoS2X6awNdFe8z2</string>
-    <string name="AdminPass">ADMINADMIN</string>
-    <string name="AdminEmail">admin@tohfa.com</string>
+    <string name="you_don_t_added_any_product_in_the_favorite">You don\'t added any product in the favorite</string>
+
 </resources>

@@ -31,6 +31,8 @@ class basketActivity : AppCompatActivity() , basketAdapter.onClickBasketProduct 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_basket)
 
+        basket_progress.visibility = View.VISIBLE
+
         baskets = ArrayList()
         currentDB = UserDatabase(this)
         db = FirebaseFirestore.getInstance()
@@ -40,8 +42,10 @@ class basketActivity : AppCompatActivity() , basketAdapter.onClickBasketProduct 
         if (baskets.size == 0 ){
             basketActivity_txt_empty.visibility = View.VISIBLE
             basketActivity_btn_pay.visibility = View.GONE
+            basket_progress.visibility = View.GONE
         }
         adapter = basketAdapter(this,baskets,this)
+        basket_progress.visibility = View.GONE
         basketActivity_recycler.layoutManager = GridLayoutManager(this,1)
         basketActivity_recycler.adapter = adapter
 

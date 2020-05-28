@@ -63,7 +63,11 @@
         <activity android:name=".ui_elements.user.activity.varietiesActivity" />
         <activity android:name=".ui_elements.user.activity.DetailesActivity" />
         <activity android:name=".ui_elements.user.activity.CategoriesActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".ui_elements.user.activity.userMapsActivity"
@@ -85,11 +89,7 @@
         <activity android:name=".ui_elements.SignUp" />
         <activity android:name=".ui_elements.LoginActivity" />
         <activity android:name=".ui_elements.SplashScreen" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
