@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui_elements.user.activity.basketActivity"
+    android:background="@color/defultbckground">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/basketActivity_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"/>
+    <Button
+        android:id="@+id/basketActivity_btn_pay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/buy_now"
+        android:textColor="@color/white"
+        android:fontFamily="@font/titlesfont"
+        android:background="@color/primary"
+        android:layout_margin="@dimen/_15sdp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/basketActivity_txt_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/notAdding_in_basket"
+        android:textColor="@color/divider"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+</RelativeLayout>

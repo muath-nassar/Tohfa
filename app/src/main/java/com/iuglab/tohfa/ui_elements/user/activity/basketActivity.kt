@@ -107,7 +107,7 @@ class basketActivity : AppCompatActivity() , basketAdapter.onClickBasketProduct 
                 .addOnFailureListener {
                     Toast.makeText(baseContext,getString(R.string.fail),Toast.LENGTH_LONG).show()
                 }
-            return "Task Completed ."
+            return "Task Completed"
         }
 
         override fun onPostExecute(result: String?) {
