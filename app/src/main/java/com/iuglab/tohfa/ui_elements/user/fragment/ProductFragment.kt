@@ -35,12 +35,9 @@ class ProductFragment : Fragment() , productAdapter2.onClickProduct , productAda
     var db = FirebaseFirestore.getInstance()
     var TAG = "osm"
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        var root = inflater.inflate(R.layout.fragment_product, container, false)
+         root = inflater.inflate(R.layout.fragment_product, container, false)
         arrayBestProduct = ArrayList()
         arrayProduct = ArrayList()
 
@@ -114,6 +111,11 @@ class ProductFragment : Fragment() , productAdapter2.onClickProduct , productAda
 
         return root
     }
+
+//    override fun onResume() {
+//        super.onResume()
+//        adapter.notifyDataSetChanged()
+//    }
 
     override fun onClickProduct(position: Int) {
         var product = arrayProduct[position]
