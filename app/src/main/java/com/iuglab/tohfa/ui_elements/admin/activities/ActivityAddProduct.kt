@@ -155,6 +155,8 @@ class ActivityAddProduct : AppCompatActivity() {
                                 Product.LOCATION to geoPoint,
                                 Product.IMAGE to uri.toString(),
                                 Product.RATE to 0,
+                                Product.PURCHASE_TIMES to 0,
+                                Product.RATE_SUMMATION to 0,
                                 Product.PURCHASE_TIMES to 0
 
                             )

@@ -29,6 +29,8 @@ import com.google.android.gms.maps.model.LatLng
         val RATE = "rate"
         val LOCATION = "location"
         val PURCHASE_TIMES = "purchaseTimes"
+        val RATE_SUMMATION ="summation rate"
+        val RATE_TIMES = "number of rates"
 
         //for database favorite
         val COL_ID ="id"

@@ -54,5 +54,7 @@
     <string name="sure_delete">Are sure delete the product ?</string>
     <string name="added_favorite">The product was added to favorites</string>
     <string name="remove_from_favorite">The product has been removed from favorites</string>
-
+    <string name="AdminKey">eRSttuzNI1ay4hoS2X6awNdFe8z2</string>
+    <string name="AdminPass">ADMINADMIN</string>
+    <string name="AdminEmail">admin@tohfa.com</string>
 </resources>
