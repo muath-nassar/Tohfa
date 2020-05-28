@@ -47,19 +47,19 @@ class CategoriesActivity : AppCompatActivity(){
 
     private fun createTabIcons() {
         val tabOne = LayoutInflater.from(this).inflate(R.layout.custom_tab, null) as TextView
-        tabOne.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_variters, 0, 0)
+        tabOne.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_product, 0, 0)
         categories_tabs.getTabAt(0)!!.setCustomView(tabOne)
 
         val tabTwo = LayoutInflater.from(this).inflate(R.layout.custom_tab, null) as TextView
-        tabTwo.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_product, 0, 0)
+        tabTwo.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_variters, 0, 0)
         categories_tabs.getTabAt(1)!!.setCustomView(tabTwo)
 
     }
 
     private fun createViewPager(viewPager: ViewPager) {
         val adapter = ViewPagerAdapter(supportFragmentManager)
-        adapter.addFrag(VarietiesFragment(), "Varieties")
         adapter.addFrag(ProductFragment(), "Product")
+        adapter.addFrag(VarietiesFragment(), "Varieties")
 
         viewPager.adapter = adapter
     }

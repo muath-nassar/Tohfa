@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.firestore.FirebaseFirestore
@@ -102,6 +103,9 @@ class basketActivity : AppCompatActivity() , basketAdapter.onClickBasketProduct 
                             startActivity(intent)
                         }
                     }
+                }
+                .addOnFailureListener {
+                    Toast.makeText(baseContext,getString(R.string.fail),Toast.LENGTH_LONG).show()
                 }
             return "Task Completed ."
         }
