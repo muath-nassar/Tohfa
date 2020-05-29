@@ -23,11 +23,8 @@ import com.karumi.dexter.listener.PermissionGrantedResponse
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
 import kotlinx.android.synthetic.main.activity_add_category.*
-import kotlinx.android.synthetic.main.activity_update_category.*
 import kotlinx.android.synthetic.main.toolbar_admin.*
 import java.io.ByteArrayOutputStream
-import java.util.*
-import kotlin.collections.HashMap
 
 
 class ActivityAddCategory : AppCompatActivity() {
@@ -50,7 +47,7 @@ class ActivityAddCategory : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         btnAddCategory.setOnClickListener {
-            if (imgUrI != null && etCategoryNameUpdate.text.toString().isNotEmpty()) {
+            if (imgUrI != null && etCategoryName.text.toString().isNotEmpty()) {
                 val bitmap = (imgCategory.drawable as BitmapDrawable).bitmap
                 val baos = ByteArrayOutputStream()
                 bitmap.compress(Bitmap.CompressFormat.PNG, 50, baos)
