@@ -7,12 +7,11 @@
     android:layout_height="match_parent"
     android:theme="@style/MaterialStyle"
     android:background="@color/defultbckground"
-
     tools:context=".ui_elements.LoginActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/logincontiner">
 
         <ImageView
@@ -44,7 +43,7 @@
             android:fontFamily="@font/titlesfont"
             android:text="Market"
             android:textColor="@color/primary"
-            android:textSize="25sp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView2"
             app:layout_constraintStart_toEndOf="@+id/textView4" />
 
@@ -173,42 +172,42 @@
             android:id="@+id/signinByFacebook"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginTop="20dp"
             android:background="#fff"
+            android:padding="@dimen/_2sdp"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_facebook"
-            app:layout_constraintBottom_toTopOf="@+id/tvSignup"
+            app:layout_constraintBottom_toBottomOf="@+id/signInButton"
             app:layout_constraintEnd_toStartOf="@+id/textView5"
             app:layout_constraintHorizontal_bias="0.784"
             app:layout_constraintStart_toStartOf="@+id/imageView3"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3"
+            app:layout_constraintTop_toTopOf="@+id/signInButton"
             app:layout_constraintVertical_bias="0.178" />
 
         <ImageButton
             android:id="@+id/signInButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:padding="@dimen/_2sdp"
             android:layout_marginStart="44dp"
             android:layout_marginTop="20dp"
             android:background="#fff"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_google"
-            app:layout_constraintBottom_toTopOf="@+id/tvSignup"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/textView5"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3"
-            app:layout_constraintVertical_bias="0.178" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
         <LinearLayout
             android:id="@+id/tvSignup"
-            android:padding="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:gravity="center"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/signInButton">
 
             <ImageView
                 android:layout_width="25dp"
@@ -218,9 +217,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Registration New Account"
-                android:padding="2dp"
                 android:fontFamily="@font/titlesfont"
+                android:padding="2dp"
+                android:text="Registration New Account"
                 android:textColor="@color/primary"
                 android:textSize="16sp" />
 
@@ -243,7 +242,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/signinByFacebook"
+            app:layout_constraintBottom_toBottomOf="@+id/signInButton"
             app:layout_constraintEnd_toEndOf="@+id/signinByFacebook"
             app:layout_constraintStart_toStartOf="@+id/signinByFacebook"
             app:layout_constraintTop_toTopOf="@+id/signinByFacebook" />
