@@ -2,13 +2,14 @@ package com.iuglab.tohfa.ui_elements.user.databse
 
 import android.app.Activity
 import android.content.ContentValues
+import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import com.iuglab.tohfa.appLogic.models.Product
 import com.iuglab.tohfa.ui_elements.user.model.itemBascket
 
-class UserDatabase(activity: Activity): SQLiteOpenHelper(activity , DATABASE_NAME , null ,DATABASE_VERSION) {
+class UserDatabase(activity: Context): SQLiteOpenHelper(activity , DATABASE_NAME , null ,DATABASE_VERSION) {
 
     companion object{
         val DATABASE_NAME = "UserDatabase"

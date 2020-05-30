@@ -1,10 +1,11 @@
 package com.iuglab.tohfa.appLogic.models
 
+import android.os.Parcel
+import android.os.Parcelable
 import com.google.android.gms.maps.model.LatLng
 
 
- class Product
-    (
+ class Product(
    var name: String,
     var category: String,
     var id: String?,
@@ -13,10 +14,8 @@ import com.google.android.gms.maps.model.LatLng
     var img: String?,
     var rate: Int = 0,
    var purchaseTimes : Int?,
-    var location: LatLng
+    var location: LatLng) {
 
-)
-{
     companion object {
         //for database names
         val NAME = "name"
@@ -38,4 +37,4 @@ import com.google.android.gms.maps.model.LatLng
                 "$COL_USER_KEY text not null ) ;"
 
     }
-}
+ }

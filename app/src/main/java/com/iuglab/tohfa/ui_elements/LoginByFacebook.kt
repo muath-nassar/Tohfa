@@ -9,6 +9,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.facebook.*
 import com.facebook.login.LoginResult
+import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -23,6 +25,7 @@ class LoginByFacebook : AppCompatActivity(){
     lateinit var mFirebaseAuth : FirebaseAuth
     lateinit var authStateListener : FirebaseAuth.AuthStateListener
     lateinit var accessTokenTracker : AccessTokenTracker
+    lateinit var credential : AuthCredential
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,12 +75,12 @@ class LoginByFacebook : AppCompatActivity(){
         accessTokenTracker = object : AccessTokenTracker(){
             override fun onCurrentAccessTokenChanged(oldAccessToken: AccessToken?, currentAccessToken: AccessToken?) {
                 if (currentAccessToken == null){
-                    Log.e("Abd","AccessTokenTracker : SignOut")
+                    Log.e("signoutbutton","AccessTokenTracker : button SignOut Clicked")
                     mFirebaseAuth.signOut()
                 }
             }
-
         }
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -88,7 +91,7 @@ class LoginByFacebook : AppCompatActivity(){
     private fun handleFacebookToken(accessToken: AccessToken?) {
         Log.e("Abd","Handle Access Token")
 
-        val credential = FacebookAuthProvider.getCredential(accessToken!!.token)
+        credential = FacebookAuthProvider.getCredential(accessToken!!.token)
 
         mFirebaseAuth.signInWithCredential(credential).addOnCompleteListener { result ->
             if(result.isSuccessful){
@@ -98,14 +101,27 @@ class LoginByFacebook : AppCompatActivity(){
 
             }else{
                 Log.e("Abd","signInWithCredential : Failed (${result.exception})")
-
+                result.addOnCanceledListener {
+                    Snackbar.make(faceContiner,"Login Canceled Successfully",Snackbar.LENGTH_LONG).show()
+                    finish()
+                }
+                result.addOnFailureListener {
+                    if (it.message!!.contains(getString(R.string.accountFoundException))){
+                        Snackbar.make(faceContiner,"Your Email Already Found ,Try By Email OR Google",Snackbar.LENGTH_INDEFINITE).show()
+                    }else{
+                        Snackbar.make(faceContiner,"Login Failed \n ${it.message}",Snackbar.LENGTH_INDEFINITE).show()
+                    }
+                    updateUI(null)
+                    faceContiner.postDelayed({
+                        finish()
+                    },3000)
+                }
             }
         }
     }
 
     private fun updateUI(user: FirebaseUser?) {
         if (user != null){
-
             //////   SharedPreferences For Facebook Login   ///////////
             val sharedPref = getSharedPreferences("MyPref4", Context.MODE_PRIVATE)
             val editor = sharedPref.edit()
@@ -129,8 +145,17 @@ class LoginByFacebook : AppCompatActivity(){
             startActivity(intent)
             finish()
         }else{
-            Log.e("Abd","UpdateUI : Null User")
-            Toast.makeText(applicationContext,"Update UI : User Null",Toast.LENGTH_LONG).show()
+            Log.e("Abd","UPDATE UI : NULL")
+            Log.e("Abd","AccessTokenTracker : SignOut")
+            accessTokenTracker = object : AccessTokenTracker(){
+                override fun onCurrentAccessTokenChanged(oldAccessToken: AccessToken?, currentAccessToken: AccessToken?) {
+                    if (currentAccessToken == null){
+                        Log.e("signoutbutton","AccessTokenTracker : button SignOut Clicked")
+                        mFirebaseAuth.signOut()
+                    }
+                }
+            }
+
         }
     }
 

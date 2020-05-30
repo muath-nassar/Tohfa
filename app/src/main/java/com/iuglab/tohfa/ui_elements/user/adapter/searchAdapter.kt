@@ -1,28 +1,34 @@
 package com.iuglab.tohfa.ui_elements.user.adapter
 
 import android.app.Activity
+import android.content.Context
+import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.iuglab.tohfa.R
 import com.iuglab.tohfa.appLogic.models.Product
+import com.iuglab.tohfa.ui_elements.user.activity.DetailesActivity
 import com.iuglab.tohfa.ui_elements.user.databse.UserDatabase
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.categories_item_layout3.view.*
+import java.util.*
+import kotlin.collections.ArrayList
 
-class searchAdapter (var activity: Activity, var products:ArrayList<Product>, val click: searchAdapter.onClickSearchProduct?) : RecyclerView.Adapter<searchAdapter.MyViewHolder>() ,
-    Filterable {
+class searchAdapter (var context: Context, var products:ArrayList<Product>) : RecyclerView.Adapter<searchAdapter.MyViewHolder>() {
 
     lateinit var favorite : UserDatabase
     lateinit var favorites : ArrayList<String>
     var productsFull = ArrayList<Product>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        var root = LayoutInflater.from(activity).inflate(R.layout.categories_item_layout3,parent,false)
-        favorite = UserDatabase(activity)
+        var root = LayoutInflater.from(context).inflate(R.layout.categories_item_layout3,parent,false)
+        favorite = UserDatabase(context)
         favorites = favorite.getAllKeyProduct()
         return MyViewHolder(root)
     }
@@ -61,8 +67,27 @@ class searchAdapter (var activity: Activity, var products:ArrayList<Product>, va
 
 
         holder.card.setOnClickListener {
-            click!!.onClickSearchProduct(position)
+//            click!!.onClickSearchProduct(position)
+
+            Log.e("search","$position")
+            var product = products[position]
+            var lat = product.location.latitude
+            var lon = product.location.longitude
+
+            var i = Intent(context.applicationContext, DetailesActivity::class.java)
+            i.putExtra("id",product.id)
+            i.putExtra("name",product.name)
+            i.putExtra("category",product.category)
+            i.putExtra("img",product.img)
+            i.putExtra("price",product.price)
+            i.putExtra("description",product.description)
+            i.putExtra("purchaseTimes",product.purchaseTimes)
+            i.putExtra("lat",lat)
+            i.putExtra("lon",lon)
+            context.startActivity(i)
+
         }
+
 
     }
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
@@ -71,42 +96,11 @@ class searchAdapter (var activity: Activity, var products:ArrayList<Product>, va
         var price = itemView.categories_item_layout3_cost
         var heart = itemView.categories_item_layout3_btn_favorite
         var card = itemView.categories_item_layout3_card
-
     }
 
-    interface onClickSearchProduct{
-        fun onClickSearchProduct(position: Int)
+    fun filterList(filteredList : ArrayList<Product>){
+        products = filteredList
+        notifyDataSetChanged()
     }
 
-    override fun getFilter(): Filter {
-        return filter
-    }
-
-
-
-    private var filter = object  : Filter() {
-        override fun performFiltering(constraint: CharSequence): FilterResults {
-            var filteredList  = ArrayList<Product>()
-            if (constraint == null || constraint.length == 0){
-                filteredList.addAll(productsFull)
-            }else{
-                var filterPattern : String = constraint.toString().toLowerCase().trim()
-                for (item in productsFull){
-                    if(item.name.toLowerCase().contains(filterPattern)){
-                        filteredList.add(item)
-                    }
-                }
-            }
-
-            var results = FilterResults()
-            results.values = filteredList
-            return results
-        }
-
-        override fun publishResults(constraint: CharSequence, results: FilterResults) {
-            products.clear()
-            products.addAll(results.values as List<Product>)
-            notifyDataSetChanged()
-        }
-    }
 }

@@ -5,9 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui_elements.user.activity.DetailesActivity"
     android:background="@color/defultbckground"
-    >
+    tools:context=".ui_elements.user.activity.DetailesActivity">
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -155,8 +154,10 @@
         android:id="@+id/detailes_txt_detailes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/_15ssp"
-        android:textColor="@color/black"
+        android:textSize="@dimen/_13ssp"
+        android:text="hhhhhhhhhhhhhhh"
+        android:textColor="@color/secondary_text"
+        android:maxLines="3"
         android:fontFamily="@font/titlesfont"
         android:layout_marginStart="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_20sdp"
@@ -282,6 +283,7 @@
             android:id="@+id/detailes_img_contity_minus"
             android:layout_width="@dimen/_30sdp"
             android:layout_height="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
             android:src="@drawable/b_minus"
             android:layout_toStartOf="@+id/detailes_txt_contity"
             android:layout_marginStart="-30dp"

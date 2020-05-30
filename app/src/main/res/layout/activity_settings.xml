@@ -32,34 +32,34 @@
             android:textSize="20sp" />
     </LinearLayout>
 
-    <com.mikhaellopez.circularimageview.CircularImageView
-        android:id="@+id/settingUserImg"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@drawable/ic_user"
-        app:civ_border_width="4dp"
-        app:elevation="50dp"
-        app:civ_border_color_start="#9A09B3"
-        app:civ_border_color_end="#D34E2D"
-        app:civ_shadow_radius="20dp"
-        app:civ_shadow_color="@color/shadow"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/settingUserImg"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_user"
+            app:civ_border_width="4dp"
+            app:elevation="50dp"
+            app:civ_border_color_start="#9A09B3"
+            app:civ_border_color_end="#C51162"
+            app:civ_shadow_radius="20dp"
+            app:civ_shadow_color="@color/shadow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-    <ImageButton
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/defultbckground"
-        android:scaleType="fitXY"
-        android:src="@drawable/b_edit"
-        app:layout_constraintBottom_toBottomOf="@+id/settingUserImg"
-        app:layout_constraintEnd_toEndOf="@+id/settingUserImg" />
+<!--    <ImageButton-->
+<!--        android:layout_width="35dp"-->
+<!--        android:layout_height="35dp"-->
+<!--        android:layout_marginEnd="8dp"-->
+<!--        android:layout_marginBottom="8dp"-->
+<!--        android:background="@color/defultbckground"-->
+<!--        android:scaleType="fitXY"-->
+<!--        android:src="@drawable/b_edit"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/settingUserImg"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/settingUserImg" />-->
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/tvSettingsName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -71,30 +71,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/settingUserImg" />
 
-    <ImageButton
-        android:id="@+id/btnEditUsename"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:scaleType="fitXY"
-        android:background="@color/defultbckground"
-        android:src="@drawable/ic_pen"
-        app:layout_constraintBottom_toBottomOf="@+id/textView7"
-        app:layout_constraintStart_toEndOf="@+id/textView7"
-        app:layout_constraintTop_toTopOf="@+id/textView7" />
+<!--    <ImageButton-->
+<!--        android:id="@+id/btnEditUsename"-->
+<!--        android:layout_width="25dp"-->
+<!--        android:layout_height="25dp"-->
+<!--        android:scaleType="fitXY"-->
+<!--        android:background="@color/defultbckground"-->
+<!--        android:src="@drawable/ic_pen"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/textView7"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/textView7"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/textView7" />-->
 
-    <ImageButton
-        android:id="@+id/btnEditEmail"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:background="@color/defultbckground"
-        android:scaleType="fitXY"
-        android:src="@drawable/ic_pen"
-        app:layout_constraintBottom_toBottomOf="@+id/textView8"
-        app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toTopOf="@+id/textView8" />
+<!--    <ImageButton-->
+<!--        android:id="@+id/btnEditEmail"-->
+<!--        android:layout_width="25dp"-->
+<!--        android:layout_height="25dp"-->
+<!--        android:background="@color/defultbckground"-->
+<!--        android:scaleType="fitXY"-->
+<!--        android:src="@drawable/ic_pen"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/textView8"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/textView8"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/textView8" />-->
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/tvSettingsEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -105,7 +105,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/tvSettingsName" />
 
     <LinearLayout
         android:id="@+id/linearLayout3"
@@ -113,7 +113,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:gravity="center_vertical"
-        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/tvSettingsEmail"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="0dp">
 

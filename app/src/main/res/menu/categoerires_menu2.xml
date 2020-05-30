@@ -3,20 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-
     <item
         android:id="@+id/categories_icon_search"
         android:title="@string/search"
         android:icon="@drawable/ic_search_white"
-        app:showAsAction="never"
-     />
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/categories_icon_favorite"
         android:title="@string/favorite"
         android:icon="@drawable/ic_favorite_white"
-        app:showAsAction="never"
-        />
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/categories_icon_setting"

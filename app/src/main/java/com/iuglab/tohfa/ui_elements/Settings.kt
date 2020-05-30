@@ -26,6 +26,12 @@ class Settings : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
 
+        //////////  dark Theme ////////////////
+        val sharedPref5 = getSharedPreferences("isDark", Context.MODE_PRIVATE)
+        val isDark = sharedPref5.getBoolean("isDark",false)
+        if (isDark){
+            switchDarkTheme.isChecked = true
+        }
         switchDarkTheme.setOnCheckedChangeListener { buttonView, isChecked ->
             //////   SharedPreferences For Dark Mode ///////////
             val sharedPref = getSharedPreferences("isDark", Context.MODE_PRIVATE)
@@ -39,17 +45,29 @@ class Settings : AppCompatActivity() {
                 editor.remove("isDark").apply()
             }
         }
+        /////////////////////////////////////
 
+
+
+        ///////  Set Name,Email,Photo //////
         val user = FirebaseAuth.getInstance().currentUser
-        Toast.makeText(applicationContext,"${user!!.uid} - ${user.email} - ${user.displayName}",Toast.LENGTH_LONG).show()
         // To Get Account Image
 
         if (user != null){
             if (user.photoUrl != null){
                 //GetImageTask(settingUserImg).execute(user.photoUrl.toString())
-                Glide.with(this).load(user.photoUrl).into(settingUserImg)
+                Glide
+                    .with(this)
+                    .load(user.photoUrl)
+                    .placeholder(R.drawable.ic_user)
+                    .into(settingUserImg)
             }
         }
+        tvSettingsName.text = user!!.displayName
+        tvSettingsEmail.text = user.email
+        ////////////////////////////////////
+
+
 
         btnDeleteAccount.setOnClickListener {
             if (user != null) {
@@ -62,6 +80,7 @@ class Settings : AppCompatActivity() {
 
             } else {
                 Toast.makeText(applicationContext,FirebaseAuth.getInstance().currentUser!!.email+" IS NOT SIGNIN",Toast.LENGTH_LONG).show()
+                finish()
             }
         }
 
@@ -87,32 +106,6 @@ class Settings : AppCompatActivity() {
         val editor = sharedPref.edit()
         editor.remove(key).apply()
         ////////////////////////////////////////////////////////////
-    }
-
-    inner class GetImageTask(bmImage: ImageView) : AsyncTask<String?, Void?, Bitmap?>() {
-        var bmImage: ImageView
-
-        init {
-            this.bmImage = bmImage
-        }
-
-        override fun doInBackground(vararg params: String?): Bitmap? {
-            val urldisplay = params[0]
-            var mIcon11: Bitmap? = null
-            try {
-                val `in`: InputStream = URL(urldisplay).openStream()
-                mIcon11 = BitmapFactory.decodeStream(`in`)
-            } catch (e: Exception) {
-                Log.e("Error", e.message)
-                e.printStackTrace()
-            }
-            return mIcon11
-        }
-
-        override fun onPostExecute(result: Bitmap?) {
-            bmImage.setImageBitmap(result)
-        }
-
     }
 
     override fun onBackPressed() {

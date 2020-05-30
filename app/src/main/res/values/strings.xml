@@ -55,4 +55,8 @@
     <string name="added_favorite">The product was added to favorites</string>
     <string name="remove_from_favorite">The product has been removed from favorites</string>
 
+    <string name="AdminKey" translatable="false">eRSttuzNI1ay4hoS2X6awNdFe8z2</string>
+    <string name="AdminPass" translatable="false">ADMINADMIN</string>
+    <string name="AdminEmail" translatable="false">admin@tohfa.com</string>
+    <string name="accountFoundException" translatable="false">An account already exists with the same email address</string>
 </resources>

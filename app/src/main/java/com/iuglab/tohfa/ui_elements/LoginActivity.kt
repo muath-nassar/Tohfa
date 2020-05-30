@@ -222,9 +222,6 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener{
         val isLogin = sharedPref2.getBoolean("isLogin",false)
         if (isLogin){
             if (user != null) {
-                Toast.makeText(applicationContext,"${user.email}",Toast.LENGTH_SHORT).show()
-                Toast.makeText(applicationContext,"${user.displayName}",Toast.LENGTH_LONG).show()
-                Toast.makeText(applicationContext,"${user.photoUrl}",Toast.LENGTH_LONG).show()
 
                 val i = Intent(this, CategoriesActivity::class.java)
                 i.putExtra("email", user.email)

@@ -25,8 +25,9 @@
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="best_seller">Best Seller</string>
-    <string name="AdminKey">eRSttuzNI1ay4hoS2X6awNdFe8z2</string>
-    <string name="AdminPass">ADMINADMIN</string>
-    <string name="AdminEmail">admin@tohfa.com</string>
+    <string name="AdminKey" translatable="false">eRSttuzNI1ay4hoS2X6awNdFe8z2</string>
+    <string name="AdminPass" translatable="false">ADMINADMIN</string>
+    <string name="AdminEmail" translatable="false">admin@tohfa.com</string>
+    <string name="accountFoundException" translatable="false">An account already exists with the same email address</string>
 
 </resources>

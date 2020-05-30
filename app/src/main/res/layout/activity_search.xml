@@ -1,29 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/defultbckground"
     tools:context=".ui_elements.user.activity.SearchActivity"
     android:orientation="vertical">
-    <com.google.android.material.appbar.AppBarLayout
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:orientation="horizontal">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/search_toolbar"
+        <EditText
+            android:id="@+id/etSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="?actionBarSize"
-            android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"/>
+            android:background="@drawable/search_btn_shap"
+            android:padding="10dp"
+            android:fontFamily="@font/titlesfont"
+            android:textColor="@color/primary_text"
+            android:elevation="50dp"
+            android:shadowDy="5"
+            android:shadowDx="5"
+            android:shadowRadius="10"
+            android:shadowColor="#393933"
+            android:hint="Enter Product Name"
+            android:layout_margin="@dimen/_10sdp"/>
 
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="@dimen/_25sdp"
+            android:src="@drawable/b_search"/>
 
-    </com.google.android.material.appbar.AppBarLayout>
+    </FrameLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/search_recycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
 </LinearLayout>

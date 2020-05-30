@@ -18,8 +18,8 @@ import kotlinx.android.synthetic.main.basket_item_layout.view.*
 class basketAdapter (var context: Activity, var baskets:ArrayList<itemBascket>, val click: basketAdapter.onClickBasketProduct?): RecyclerView.Adapter<basketAdapter.MyViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        var root =
-            LayoutInflater.from(context).inflate(R.layout.basket_item_layout,parent,false)
+//        var root = LayoutInflater.from(context).inflate(R.layout.basket_item_layout,parent,false)
+        var root = LayoutInflater.from(context).inflate(R.layout.activity_add_category,parent,false)
         return MyViewHolder(root)
     }
 
@@ -28,7 +28,7 @@ class basketAdapter (var context: Activity, var baskets:ArrayList<itemBascket>, 
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        Picasso.get().load(baskets[position].img).into(holder.img)
+//        Picasso.get().load(baskets[position].img).into(holder.img)
         holder.title.text = baskets[position].name
         holder.contity.text = baskets[position].contity.toString()
         holder.card.setOnClickListener {
