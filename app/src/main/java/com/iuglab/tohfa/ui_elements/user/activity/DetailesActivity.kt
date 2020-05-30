@@ -1,11 +1,12 @@
 package com.iuglab.tohfa.ui_elements.user.activity
 
-import android.app.ProgressDialog
 import android.content.Intent
-import android.os.AsyncTask
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.RatingBar
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -20,9 +21,10 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.iuglab.tohfa.R
 import com.iuglab.tohfa.ui_elements.user.databse.UserDatabase
 import com.iuglab.tohfa.ui_elements.user.model.itemBascket
+import com.iuglab.tohfa.ui_elements.user.model.itemRate
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detailes.*
-import kotlin.math.log
+
 
 class DetailesActivity : AppCompatActivity() , OnMapReadyCallback {
 
@@ -43,6 +45,8 @@ lateinit var id :String
     lateinit var currentDB : UserDatabase
     lateinit var favorite : UserDatabase
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detailes)
@@ -54,6 +58,7 @@ lateinit var id :String
         db = FirebaseFirestore.getInstance()
         currentDB = UserDatabase(this)
         favorite = UserDatabase(this)
+
 
         id = intent.getStringExtra("id")
         name =intent.getStringExtra("name")
@@ -98,6 +103,17 @@ lateinit var id :String
             detailes_img_addBascket.setImageResource(R.drawable.ic_shopping2)
         }else{
             detailes_img_addBascket.setImageResource(R.drawable.ic_add_shopping)
+        }
+
+        if (currentDB.searchAboutProductRate(id).size > 0){
+            var rates = currentDB.searchAboutProductRate(id)
+            for (r in rates){
+                if (id == r.id){
+                    detailes_rating.rating = r.userRate.toFloat()
+                    detailes_rating.setIsIndicator(true)
+                    detailes_txt_rate.text = getString(R.string.you_rating)
+                }
+            }
         }
 
         detailes_img_favorite.setOnClickListener {
@@ -224,6 +240,13 @@ lateinit var id :String
                 }
              }
         }
+
+        detailes_rating.setOnRatingBarChangeListener(RatingBar.OnRatingBarChangeListener { ratingBar, rating, fromUser ->
+            var currentRate = itemRate(id,rating.toInt())
+            currentDB.insertRate(currentRate)
+            detailes_rating.setIsIndicator(true)
+            detailes_txt_rate.text = getString(R.string.you_rating)
+        })
 
     }
 

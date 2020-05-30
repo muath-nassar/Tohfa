@@ -26,7 +26,6 @@ class varietiesActivity : AppCompatActivity() , varietiesAdapter2.onClickItem {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_varieties)
 
-        varieties_progress.visibility = View.VISIBLE
 
         db = FirebaseFirestore.getInstance()
         products = ArrayList()

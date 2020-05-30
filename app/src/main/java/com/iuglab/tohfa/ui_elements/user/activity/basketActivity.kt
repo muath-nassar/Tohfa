@@ -50,7 +50,12 @@ class basketActivity : AppCompatActivity() , basketAdapter.onClickBasketProduct 
         basketActivity_recycler.adapter = adapter
 
         basketActivity_btn_pay.setOnClickListener {
-            buyAsyncTask().execute()
+            if(baskets.size > 0){
+                buyAsyncTask().execute()
+            }else{
+                Toast.makeText(baseContext,getString(R.string.basket_is_empty),Toast.LENGTH_LONG).show()
+            }
+
         }
 
     }
