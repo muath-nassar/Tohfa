@@ -1,6 +1,7 @@
 package com.iuglab.tohfa.ui_elements.admin.fragments
 
 import android.graphics.Color
+import android.graphics.DashPathEffect
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.Legend.LegendForm
+import com.github.mikephil.charting.components.LegendEntry
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.google.firebase.firestore.Query
@@ -17,13 +19,11 @@ import com.google.firebase.ktx.Firebase
 import com.iuglab.tohfa.R
 import com.iuglab.tohfa.appLogic.models.Product
 import kotlinx.android.synthetic.main.fragment_admin_dashboard.*
-import java.util.*
 import kotlin.collections.ArrayList
 
 class FragmentAdminDashboard : Fragment() {
-    val mapOfBestPurchased = mutableMapOf<String, Double>()
-    var totPurchased = 0
-    var totBest5 = 0
+    val highProductsRate = mutableListOf<String>()
+
     val db = Firebase.firestore
     lateinit var pieData: PieData
 
@@ -40,6 +40,7 @@ class FragmentAdminDashboard : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        drawBarChart()
     }
 
     override fun onCreateView(
@@ -75,7 +76,7 @@ class FragmentAdminDashboard : Fragment() {
                 drawpieChart()
             }
 
-        drawBarChart(intArrayOf(80, 100, 350, 108, 500))
+
     }
 
     private fun drawpieChart() {
@@ -103,39 +104,45 @@ class FragmentAdminDashboard : Fragment() {
     }
 
 
-    private fun drawBarChart(numbers: IntArray) {
-
-        val chart = horizontalBarChart
-        chart.setDrawBarShadow(false)
-        chart.setDrawValueAboveBar(true)
-        chart.setMaxVisibleValueCount(numbers.size)
-        chart.setPinchZoom(true)
-        chart.setDrawGridBackground(true)
+    private fun drawBarChart() {
         val barEntries = mutableListOf<BarEntry>()
-        var x = 1f
-        for (number in numbers) {
-            barEntries.add(BarEntry(x, number.toFloat()))
-            x++
-        }
-        val barDataSet = BarDataSet(barEntries, "Top Rated Products")
-        barDataSet.setColors(*ColorTemplate.COLORFUL_COLORS)
-        val data = BarData(barDataSet)
-        data.barWidth = 0.5f
+        val query = db.collection("products").orderBy(Product.RATE,Query.Direction.DESCENDING).limit(5).get()
+       query.addOnSuccessListener {snapshot ->
+           var x = 0f
+           for (document in snapshot){
+               val name = document.getString(Product.NAME)
+               val rate = document.getDouble(Product.RATE)
+               barEntries.add(BarEntry(x, rate!!.toFloat()))
+               highProductsRate.add(name!!)
+               x++
+           }
 
-        //
-        /* val l = chart.legend
-         l.verticalAlignment = Legend.LegendVerticalAlignment.BOTTOM
-         l.horizontalAlignment = Legend.LegendHorizontalAlignment.LEFT
-         l.orientation = Legend.LegendOrientation.HORIZONTAL
-         l.setDrawInside(false)
-         l.form = LegendForm.SQUARE
-         l.formSize = 9f
-         l.textSize = 11f
-         l.xEntrySpace = 4f*/
-        //
+           val chart = horizontalBarChart
+           chart.setDrawBarShadow(false)
+           chart.setDrawValueAboveBar(true)
+           chart.setMaxVisibleValueCount(highProductsRate.size)
+           chart.setPinchZoom(true)
+           chart.setDrawGridBackground(true)
 
 
-        chart.data = data
+           val barDataSet = BarDataSet(barEntries, "Top Rated Products")
+           barDataSet.setColors(*ColorTemplate.COLORFUL_COLORS)
+           val data = BarData(barDataSet)
+           data.barWidth = 0.5f
+           val legend = chart.legend
+           legend.direction = Legend.LegendDirection.LEFT_TO_RIGHT
+           val names = mutableListOf<LegendEntry>()
+           var i = 0
+           for (product in highProductsRate){
+               names.add(LegendEntry(highProductsRate[i],LegendForm.DEFAULT,5f,5f, DashPathEffect(floatArrayOf(1f,1f,1f),5f),ColorTemplate.COLORFUL_COLORS[i]))
+               i++
+           }
+           legend.setCustom(names)
+           chart.data = data
+           chart.description.text = "Top rated products"
+           chart.animateY(1500, Easing.EaseOutCubic)
+
+       }
     }
 
 

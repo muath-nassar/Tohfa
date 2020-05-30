@@ -3,6 +3,7 @@ package com.iuglab.tohfa.ui_elements.user.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.firestore.FirebaseFirestore
@@ -25,6 +26,8 @@ class favoriteActivity : AppCompatActivity() ,favoriteAdapter.onClickFavoritePro
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favorite)
 
+        favorite__progress.visibility = View.VISIBLE
+
         products = ArrayList<Product>()
         keys = ArrayList<String>()
         currentDB = UserDatabase(this)
@@ -39,6 +42,9 @@ class favoriteActivity : AppCompatActivity() ,favoriteAdapter.onClickFavoritePro
                     for (document in querySnapshot) {
 
                         if (document.id == k) {
+
+                            favorite__progress.visibility = View.GONE
+
                             val id = document.id
                             val category = document.get(Product.CATEGORY).toString()
                             val desc = document.get(Product.DECRIPTION).toString()
@@ -56,14 +62,19 @@ class favoriteActivity : AppCompatActivity() ,favoriteAdapter.onClickFavoritePro
                             adapter = favoriteAdapter(this,products,this)
                             favorite_rtecycler.layoutManager = GridLayoutManager(this,1)
                             favorite_rtecycler.adapter = adapter
+
+
                         }
 
                     }
                 }
 
+
         }
 
-
+        if (products.size == 0){
+            favorite__progress.visibility = View.GONE
+        }
 
     }
 

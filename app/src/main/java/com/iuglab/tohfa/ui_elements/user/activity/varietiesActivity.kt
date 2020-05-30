@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.firestore.FirebaseFirestore
@@ -25,6 +26,7 @@ class varietiesActivity : AppCompatActivity() , varietiesAdapter2.onClickItem {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_varieties)
 
+
         db = FirebaseFirestore.getInstance()
         products = ArrayList()
         var category = intent.getStringExtra("category")
@@ -33,6 +35,7 @@ class varietiesActivity : AppCompatActivity() , varietiesAdapter2.onClickItem {
             .get()
             .addOnSuccessListener { querySnapshot ->
                 for (document in querySnapshot){
+                    varieties_progress.visibility = View.GONE
                     var id = document.id
                     var category = document.get(Product.CATEGORY).toString()
                     var desc = document.get(Product.DECRIPTION).toString()
@@ -55,6 +58,11 @@ class varietiesActivity : AppCompatActivity() , varietiesAdapter2.onClickItem {
             .addOnFailureListener {
                 Log.e(TAG,"Fail get from firebase")
             }
+
+        if (products.size == 0 ){
+            varieties_txt_empty.visibility = View.VISIBLE
+            varieties_progress.visibility = View.GONE
+        }
 
     }
 

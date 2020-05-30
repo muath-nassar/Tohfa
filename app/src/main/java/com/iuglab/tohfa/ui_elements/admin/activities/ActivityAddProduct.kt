@@ -26,7 +26,6 @@ import com.karumi.dexter.listener.PermissionDeniedResponse
 import com.karumi.dexter.listener.PermissionGrantedResponse
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
-import kotlinx.android.synthetic.main.activity_add_category.*
 import kotlinx.android.synthetic.main.activity_add_product.*
 import kotlinx.android.synthetic.main.toolbar_admin.*
 import java.io.ByteArrayOutputStream
@@ -156,7 +155,9 @@ class ActivityAddProduct : AppCompatActivity() {
                                 Product.LOCATION to geoPoint,
                                 Product.IMAGE to uri.toString(),
                                 Product.RATE to 0,
-                                Product.PURCHASE_TIMES to 0
+                                Product.PURCHASE_TIMES to 0,
+                                Product.RATE_SUMMATION to 0,
+                                Product.RATE_TIMES to 0
 
                             )
 

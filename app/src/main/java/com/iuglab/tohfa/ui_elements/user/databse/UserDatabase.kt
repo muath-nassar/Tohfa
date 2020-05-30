@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import com.iuglab.tohfa.appLogic.models.Product
 import com.iuglab.tohfa.ui_elements.user.model.itemBascket
+import com.iuglab.tohfa.ui_elements.user.model.itemRate
 
 class UserDatabase(activity: Context): SQLiteOpenHelper(activity , DATABASE_NAME , null ,DATABASE_VERSION) {
 
@@ -19,11 +20,13 @@ class UserDatabase(activity: Context): SQLiteOpenHelper(activity , DATABASE_NAME
     override fun onCreate(db: SQLiteDatabase?) {
         db!!.execSQL(Product.TABLE_CREATE)
         db.execSQL(itemBascket.TABLE_CREATE)
+        db.execSQL(itemRate.TABLE_CREATE)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         db!!.execSQL("Drop table if exists ${Product.TABLE_NAME}")
         db.execSQL("Drop table if exists ${itemBascket.TABLE_NAME}")
+        db.execSQL("Drop table if exists ${itemRate.TABLE_NAME}")
         onCreate(db)
     }
 
@@ -143,5 +146,31 @@ class UserDatabase(activity: Context): SQLiteOpenHelper(activity , DATABASE_NAME
         return db.delete(itemBascket.TABLE_NAME,null,null) > 0
     }
 
+
+    ///         RATE        ///
+
+    fun insertRate(rate:itemRate): Boolean{
+        val db: SQLiteDatabase = this.writableDatabase
+        val cv = ContentValues()
+        cv.put(itemRate.COL_KEY,rate.id)
+        cv.put(itemRate.COL_RATE,rate.userRate)
+        return db.insert(itemRate.TABLE_NAME,null,cv) > 0
+    }
+
+    fun  searchAboutProductRate(key : String) : ArrayList<itemRate>{
+        val db: SQLiteDatabase = this.writableDatabase
+        var rates = ArrayList<itemRate>()
+        val cursor = db.rawQuery("SELECT * FROM ${itemRate.TABLE_NAME} WHERE ${itemRate.COL_KEY} = \'$key\' ",null)
+        if(cursor.moveToFirst()){
+            do {
+                var key = cursor.getString(cursor.getColumnIndex(itemRate.COL_KEY))
+                var rate = cursor.getInt(cursor.getColumnIndex(itemRate.COL_RATE))
+                var itemRate = itemRate(key,rate)
+                rates.add(itemRate)
+
+            }while (cursor.moveToNext());
+        }
+        return rates
+    }
 
 }

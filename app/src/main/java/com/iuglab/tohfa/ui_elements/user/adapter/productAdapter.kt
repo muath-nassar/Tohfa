@@ -23,6 +23,8 @@ class productAdapter (var context: Activity,var products:ArrayList<Product>, val
         return MyViewHolder(root)
     }
 
+
+
     override fun getItemCount(): Int {
         return products.size
     }

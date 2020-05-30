@@ -18,7 +18,7 @@ import com.iuglab.tohfa.appLogic.models.Product
 import com.iuglab.tohfa.ui_elements.user.adapter.basketAdapter
 import com.iuglab.tohfa.ui_elements.user.databse.UserDatabase
 import com.iuglab.tohfa.ui_elements.user.model.itemBascket
-//import kotlinx.android.synthetic.main.activity_basket.*
+import kotlinx.android.synthetic.main.activity_basket.*
 
 class basketActivity : AppCompatActivity() , basketAdapter.onClickBasketProduct {
     lateinit var baskets : ArrayList<itemBascket>
@@ -29,7 +29,9 @@ class basketActivity : AppCompatActivity() , basketAdapter.onClickBasketProduct 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_basket)
+        setContentView(R.layout.activity_basket)
+
+        basket_progress.visibility = View.VISIBLE
 
         baskets = ArrayList()
         currentDB = UserDatabase(this)
@@ -37,17 +39,24 @@ class basketActivity : AppCompatActivity() , basketAdapter.onClickBasketProduct 
         progressDialog = ProgressDialog(this)
 
         baskets.addAll(currentDB.getAllBasketProducts())
-//        if (baskets.size == 0 ){
-//            basketActivity_txt_empty.visibility = View.VISIBLE
-//            basketActivity_btn_pay.visibility = View.GONE
-//        }
+        if (baskets.size == 0 ){
+            basketActivity_txt_empty.visibility = View.VISIBLE
+            basketActivity_btn_pay.visibility = View.GONE
+            basket_progress.visibility = View.GONE
+        }
         adapter = basketAdapter(this,baskets,this)
-//        basketActivity_recycler.layoutManager = GridLayoutManager(this,1)
-//        basketActivity_recycler.adapter = adapter
-//
-//        basketActivity_btn_pay.setOnClickListener {
-//            buyAsyncTask().execute()
-//        }
+        basket_progress.visibility = View.GONE
+        basketActivity_recycler.layoutManager = GridLayoutManager(this,1)
+        basketActivity_recycler.adapter = adapter
+
+        basketActivity_btn_pay.setOnClickListener {
+            if(baskets.size > 0){
+                buyAsyncTask().execute()
+            }else{
+                Toast.makeText(baseContext,getString(R.string.basket_is_empty),Toast.LENGTH_LONG).show()
+            }
+
+        }
 
     }
 
@@ -107,7 +116,7 @@ class basketActivity : AppCompatActivity() , basketAdapter.onClickBasketProduct 
                 .addOnFailureListener {
                     Toast.makeText(baseContext,getString(R.string.fail),Toast.LENGTH_LONG).show()
                 }
-            return "Task Completed ."
+            return "Task Completed"
         }
 
         override fun onPostExecute(result: String?) {

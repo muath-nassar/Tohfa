@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@style/MaterialStyle"
+    android:background="@color/defultbckground"
     tools:context=".ui_elements.admin.activities.ActivityShowCategoriesForAdmin">
     <include
         android:id="@+id/pToolbar"

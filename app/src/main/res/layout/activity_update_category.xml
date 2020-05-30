@@ -1,86 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/main_layout"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/defultbckground"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui_elements.admin.activities.ActivityUpdateCategory"
     android:theme="@style/MaterialStyle">
-    <include layout="@layout/toolbar_admin" />
-    <LinearLayout
-        android:layout_centerInParent="true"
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="10dp">
-
-        <!--name of category-->
-        <ImageView
-            android:id="@+id/imgCategoryUpdate"
-            android:layout_width="match_parent"
-            android:layout_height="330dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/a_image_colored"
-            android:outlineSpotShadowColor="@color/accent"
-
-            />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/categoryUpdateName"
-
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_height="match_parent"
+        android:id="@+id/main_layout">
+        <include layout="@layout/toolbar_admin" />
+        <LinearLayout
+            android:layout_centerInParent="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="15dp"
-            android:hint="category name"
-            android:outlineAmbientShadowColor="@color/secondary_text"
-            android:pointerIcon="wait"
-            app:boxBackgroundMode="outline"
-            app:boxCornerRadiusBottomEnd="10dp"
-            app:boxCornerRadiusBottomStart="10dp"
-            app:boxCornerRadiusTopEnd="10dp"
-            app:boxCornerRadiusTopStart="10dp"
-            app:boxStrokeColor="@color/primary"
-            app:endIconMode="custom"
-            app:endIconTint="@color/primary"
-            app:hintAnimationEnabled="true"
-            app:hintEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.526"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2">
+            android:orientation="vertical"
+            android:padding="10dp">
 
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etCategoryNameUpdate"
+            <!--name of category-->
+            <ImageView
+                android:id="@+id/imgCategoryUpdate"
                 android:layout_width="match_parent"
-                android:layout_height="65dp"
+                android:layout_height="330dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/a_image_colored"
+                android:outlineSpotShadowColor="@color/accent"
+
+                />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/categoryUpdateName"
+
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="15dp"
+                android:hint="category name"
+                android:outlineAmbientShadowColor="@color/secondary_text"
+                android:pointerIcon="wait"
+                app:boxBackgroundMode="outline"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
+                app:boxStrokeColor="@color/primary"
+                app:endIconMode="custom"
+                app:endIconTint="@color/primary"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.526"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView2">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etCategoryNameUpdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
+                    android:fontFamily="@font/titlesfont"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCategoryUpdate"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
                 android:fontFamily="@font/titlesfont"
-                android:inputType="text" />
+                android:gravity="center"
+                android:text="update category"
+                app:cornerRadius="5dp"
+                android:textColor="#fff"
+                android:textSize="25sp"
+                app:elevation="20dp"
+                tools:layout_editor_absoluteX="8dp" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnCategoryUpdate"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:fontFamily="@font/titlesfont"
-            android:gravity="center"
-            android:text="update category"
-            app:cornerRadius="5dp"
-            android:textColor="#fff"
-            android:textSize="25sp"
-            app:elevation="20dp"
-            tools:layout_editor_absoluteX="8dp" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 
 
-</RelativeLayout>
+</ScrollView>
